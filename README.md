@@ -24,8 +24,8 @@
 
 ## Roadmap
 
-- [ ] Initialize the project
-- [ ] Create functions to access weather API
+- [x] Initialize the project
+- [x] Create functions to access weather API
 - [ ] Create functions to process API data
 - [ ] Implement functionality to customize user location
 - [ ] Add some page styling
