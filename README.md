@@ -26,7 +26,7 @@
 
 - [x] Initialize the project
 - [x] Create functions to access weather API
-- [ ] Create functions to process API data
+- [x] Create functions to process API data
 - [ ] Implement functionality to customize user location
 - [ ] Add some page styling
 - [ ] Add a loading screen
