@@ -1,6 +1,6 @@
 import './normalize.css';
 import './style.css';
-import { format } from 'date-fns';
+import { format, isToday, isTomorrow, parse } from 'date-fns';
 import getWeather from './weather';
 import titleCase from './helper-fns';
 
@@ -19,6 +19,7 @@ import titleCase from './helper-fns';
   const windDirElem = document.querySelector('#wind_dir');
   const precipElem = document.querySelector('#precip');
   const humidityElem = document.querySelector('#humidity');
+  const forecastElem = document.querySelector('#forecast');
 
   const time12Btn = document.querySelector('#time-12');
   const time24Btn = document.querySelector('#time-24');
@@ -50,8 +51,7 @@ import titleCase from './helper-fns';
     precipElem.innerText = `${results.weather.imp.precip} in`;
   };
 
-  const updateDOM = () => {
-    console.log(results);
+  const updateRealtimeDOM = () => {
     date = new Date(Date.parse(results.location.date));
 
     cityElem.innerText = results.location.city;
@@ -62,8 +62,40 @@ import titleCase from './helper-fns';
     conditionElem.innerText = results.weather.imp.condition;
     conditionElem.innerText = titleCase(results.weather.imp.condition);
     windDirElem.innerText = results.weather.imp.wind_dir;
-    humidityElem.innerText = `${results.weather.imp.humidity}`;
+    humidityElem.innerText = `${results.weather.imp.humidity}%`;
     updateMeasureElems('imp');
+  };
+
+  const updateForecastDOM = () => {
+    while (forecastElem.firstChild) {
+      forecastElem.removeChild(forecastElem.lastChild);
+    }
+
+    results.forecast.forEach((day) => {
+      const forecastCardElem = document.createElement('div');
+      const dayElem = document.createElement('div');
+      const highTempForeElem = document.createElement('div');
+      const lowTempForeElem = document.createElement('div');
+      const conditionForeElem = document.createElement('div');
+      const precipForeElem = document.createElement('div');
+      const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
+
+      dayElem.innerText = format(forecastDate, 'cccc');
+      if (isToday(forecastDate)) dayElem.innerText = 'Today';
+      if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
+
+      highTempForeElem.innerText = `${day.weather.imp.maxtemp}°F`;
+      lowTempForeElem.innerText = `${day.weather.imp.mintemp}°F`;
+      conditionForeElem.innerText = titleCase(day.weather.imp.condition);
+      precipForeElem.innerText = `${day.weather.imp.daily_chance_of_rain}%`;
+
+      forecastCardElem.appendChild(dayElem);
+      forecastCardElem.appendChild(highTempForeElem);
+      forecastCardElem.appendChild(lowTempForeElem);
+      forecastCardElem.appendChild(conditionForeElem);
+      forecastCardElem.appendChild(precipForeElem);
+      forecastElem.appendChild(forecastCardElem);
+    });
   };
 
   const handleSearch = async (location) => {
@@ -79,7 +111,8 @@ import titleCase from './helper-fns';
       results = await response.json();
     }
 
-    updateDOM();
+    updateRealtimeDOM();
+    updateForecastDOM();
   };
 
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
