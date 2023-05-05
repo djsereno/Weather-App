@@ -12,6 +12,7 @@
   "rules": {
     "no-underscore-dangle": "off",
     "no-unused-vars": "warn",
-    "no-unused-expressions": ["error", { "allowTernary": true }]
+    "no-unused-expressions": ["error", { "allowTernary": true }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }

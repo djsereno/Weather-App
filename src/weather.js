@@ -1,15 +1,16 @@
+const key = 'b512bf463cd641b491323834232404';
+
 const fetchWeather = async (location) => {
-  const key = 'b512bf463cd641b491323834232404';
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${key}&q=${location}`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=7`,
       {
         mode: 'cors',
       },
     );
     if (await !response.ok) throw new Error('Something went wrong!');
-    const weatherData = await response.json();
-    return weatherData;
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error(error);
     return {};
@@ -17,9 +18,11 @@ const fetchWeather = async (location) => {
 };
 
 const getWeather = async (loc = 'san francisco') => {
-  const current = await fetchWeather(loc);
-  const locationData = { ...current.location };
-  const weatherData = { ...current.current };
+  const data = await fetchWeather(loc);
+
+  const locationData = { ...data.location };
+  const weatherData = { ...data.current };
+  const forecastData = { ...data.forecast.forecastday };
 
   const location = {
     city: locationData.name,
@@ -28,7 +31,7 @@ const getWeather = async (loc = 'san francisco') => {
     date: locationData.localtime,
   };
 
-  const weatherImperial = {
+  const weatherImp = {
     temp: weatherData.temp_f,
     feelslike: weatherData.feelslike_f,
     condition: weatherData.condition.text,
@@ -38,7 +41,7 @@ const getWeather = async (loc = 'san francisco') => {
     precip: weatherData.precip_in,
     humidity: weatherData.humidity,
   };
-  const weatherMetric = {
+  const weatherMet = {
     temp: weatherData.temp_c,
     feelslike: weatherData.feelslike_c,
     condition: weatherData.condition.text,
@@ -49,9 +52,27 @@ const getWeather = async (loc = 'san francisco') => {
     humidity: weatherData.humidity,
   };
 
-  const results = { location, weather: { imp: weatherImperial, met: weatherMetric } };
+  const forecast = [];
+  Object.keys(forecastData).forEach((index) => {
+    const { date, day } = forecastData[index];
+    const forecastImp = {
+      maxtemp: day.maxtemp_f,
+      mintemp: day.mintemp_f,
+      condition: day.condition.text,
+      daily_chance_of_rain: day.daily_chance_of_rain,
+      daily_chance_of_snow: day.daily_chance_of_snow,
+    };
+    const forecastMet = {
+      maxtemp: day.maxtemp_c,
+      mintemp: day.mintemp_c,
+      condition: day.condition.text,
+      daily_chance_of_rain: day.daily_chance_of_rain,
+      daily_chance_of_snow: day.daily_chance_of_snow,
+    };
+    forecast.push({ date, weather: { imp: forecastImp, met: forecastMet } });
+  });
 
-  return results;
+  return { location, weather: { imp: weatherImp, met: weatherMet }, forecast };
 };
 
 export default getWeather;
