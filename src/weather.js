@@ -19,6 +19,7 @@ const fetchWeather = async (location) => {
 
 const getWeather = async (loc = 'san francisco') => {
   const data = await fetchWeather(loc);
+  console.log(data);
 
   const locationData = { ...data.location };
   const weatherData = { ...data.current };
@@ -32,42 +33,42 @@ const getWeather = async (loc = 'san francisco') => {
   };
 
   const weatherImp = {
-    temp: weatherData.temp_f,
-    feelslike: weatherData.feelslike_f,
+    temp: Math.round(weatherData.temp_f),
+    feelslike: Math.round(weatherData.feelslike_f),
     condition: weatherData.condition.text,
-    wind_speed: weatherData.wind_mph,
+    wind_speed: Math.round(weatherData.wind_mph),
     wind_degree: weatherData.wind_degree,
     wind_dir: weatherData.wind_dir,
     precip: weatherData.precip_in,
-    humidity: weatherData.humidity,
+    humidity: Math.round(weatherData.humidity),
   };
   const weatherMet = {
-    temp: weatherData.temp_c,
-    feelslike: weatherData.feelslike_c,
+    temp: Math.round(weatherData.temp_c),
+    feelslike: Math.round(weatherData.feelslike_c),
     condition: weatherData.condition.text,
-    wind_speed: weatherData.wind_kph,
+    wind_speed: Math.round(weatherData.wind_kph),
     wind_degree: weatherData.wind_degree,
     wind_dir: weatherData.wind_dir,
     precip: weatherData.precip_mm,
-    humidity: weatherData.humidity,
+    humidity: Math.round(weatherData.humidity),
   };
 
   const forecast = [];
   Object.keys(forecastData).forEach((index) => {
     const { date, day } = forecastData[index];
     const forecastImp = {
-      maxtemp: day.maxtemp_f,
-      mintemp: day.mintemp_f,
+      maxtemp: Math.round(day.maxtemp_f),
+      mintemp: Math.round(day.mintemp_f),
       condition: day.condition.text,
-      daily_chance_of_rain: day.daily_chance_of_rain,
-      daily_chance_of_snow: day.daily_chance_of_snow,
+      daily_chance_of_rain: Math.round(day.daily_chance_of_rain),
+      daily_chance_of_snow: Math.round(day.daily_chance_of_snow),
     };
     const forecastMet = {
-      maxtemp: day.maxtemp_c,
-      mintemp: day.mintemp_c,
+      maxtemp: Math.round(day.maxtemp_c),
+      mintemp: Math.round(day.mintemp_c),
       condition: day.condition.text,
-      daily_chance_of_rain: day.daily_chance_of_rain,
-      daily_chance_of_snow: day.daily_chance_of_snow,
+      daily_chance_of_rain: Math.round(day.daily_chance_of_rain),
+      daily_chance_of_snow: Math.round(day.daily_chance_of_snow),
     };
     forecast.push({ date, weather: { imp: forecastImp, met: forecastMet } });
   });

@@ -53,16 +53,17 @@ import titleCase from './helper-fns';
 
   const updateRealtimeDOM = () => {
     date = new Date(Date.parse(results.location.date));
+    const weatherData = results.weather.imp;
 
     cityElem.innerText = results.location.city;
     regionElem.innerText = results.location.region;
     dateElem.innerText = format(date, 'PPPP');
     updateTimeElem(12);
 
-    conditionElem.innerText = results.weather.imp.condition;
-    conditionElem.innerText = titleCase(results.weather.imp.condition);
-    windDirElem.innerText = results.weather.imp.wind_dir;
-    humidityElem.innerText = `${results.weather.imp.humidity}%`;
+    conditionElem.innerText = weatherData.condition;
+    conditionElem.innerText = titleCase(weatherData.condition);
+    windDirElem.innerText = weatherData.wind_dir;
+    humidityElem.innerText = `${weatherData.humidity}%`;
     updateMeasureElems('imp');
   };
 
@@ -79,15 +80,18 @@ import titleCase from './helper-fns';
       const conditionForeElem = document.createElement('div');
       const precipForeElem = document.createElement('div');
       const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
+      const weatherData = day.weather.imp;
 
       dayElem.innerText = format(forecastDate, 'cccc');
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
-      highTempForeElem.innerText = `${day.weather.imp.maxtemp}°F`;
-      lowTempForeElem.innerText = `${day.weather.imp.mintemp}°F`;
-      conditionForeElem.innerText = titleCase(day.weather.imp.condition);
-      precipForeElem.innerText = `${day.weather.imp.daily_chance_of_rain}%`;
+      highTempForeElem.innerText = `${weatherData.maxtemp}°F`;
+      lowTempForeElem.innerText = `${weatherData.mintemp}°F`;
+      conditionForeElem.innerText = titleCase(weatherData.condition);
+      weatherData.daily_chance_of_snow > weatherData.daily_chance_of_rain
+        ? (precipForeElem.innerText = `${weatherData.daily_chance_of_snow}%`)
+        : (precipForeElem.innerText = `${weatherData.daily_chance_of_rain}%`);
 
       forecastCardElem.appendChild(dayElem);
       forecastCardElem.appendChild(highTempForeElem);
