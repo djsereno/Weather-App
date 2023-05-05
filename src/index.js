@@ -21,10 +21,12 @@ import titleCase from './helper-fns';
   const humidityElem = document.querySelector('#humidity');
 
   const updateDOM = (results) => {
+    const date = new Date(Date.parse(results.location.date));
+
     cityElem.innerText = results.location.city;
     regionElem.innerText = results.location.region;
-    dateElem.innerText = format(results.location.date, 'PPPP');
-    timeElem.innerText = format(results.location.date, 'p');
+    dateElem.innerText = format(date, 'PPPP');
+    timeElem.innerText = format(date, 'p');
 
     tempElem.innerText = `${results.weather.imp.temp}°`;
     conditionElem.innerText = results.weather.imp.condition;
@@ -40,8 +42,16 @@ import titleCase from './helper-fns';
     if (!location) return;
     locInput.value = '';
 
-    const results = await getWeather(location);
-    console.log(results);
+    // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
+    const useAPI = false;
+    let results;
+    if (useAPI) {
+      results = await getWeather(location);
+    } else {
+      const response = await fetch('./sampledata.json');
+      results = await response.json();
+    }
+
     updateDOM(results);
   };
 

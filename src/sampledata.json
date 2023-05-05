@@ -1,0 +1,30 @@
+{
+  "location": {
+    "city": "Seattle",
+    "region": "Washington",
+    "country": "United States of America",
+    "date": "2023-05-05T19:06:00.000Z"
+  },
+  "weather": {
+    "imp": {
+      "temp": 50,
+      "feelslike": 47,
+      "condition": "Light rain",
+      "wind_speed": 8.1,
+      "wind_degree": 170,
+      "wind_dir": "S",
+      "precip": 0.04,
+      "humidity": 93
+    },
+    "met": {
+      "temp": 10,
+      "feelslike": 8.3,
+      "condition": "Light rain",
+      "wind_speed": 13,
+      "wind_degree": 170,
+      "wind_dir": "S",
+      "precip": 0.9,
+      "humidity": 93
+    }
+  }
+}

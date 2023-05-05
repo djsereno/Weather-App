@@ -25,7 +25,7 @@ const getWeather = async (loc = 'san francisco') => {
     city: locationData.name,
     region: locationData.region,
     country: locationData.country,
-    date: new Date(Date.parse(locationData.localtime)),
+    date: locationData.localtime,
   };
 
   const weatherImperial = {
@@ -49,9 +49,9 @@ const getWeather = async (loc = 'san francisco') => {
     humidity: weatherData.humidity,
   };
 
-  const weather = { location, weather: { imp: weatherImperial, met: weatherMetric } };
+  const results = { location, weather: { imp: weatherImperial, met: weatherMetric } };
 
-  return weather;
+  return results;
 };
 
 export default getWeather;
