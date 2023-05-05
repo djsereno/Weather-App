@@ -22,7 +22,7 @@ const getWeather = async (loc = 'san francisco') => {
   const weatherData = { ...current.current };
 
   const location = {
-    name: locationData.name,
+    city: locationData.name,
     region: locationData.region,
     country: locationData.country,
     time: locationData.localtime,

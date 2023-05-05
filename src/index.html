@@ -7,6 +7,29 @@
     <title>Weather App</title>
   </head>
   <body>
-    <h1>Hello!</h1>
+    <h1>Weather</h1>
+    <form action="">
+      <input type="text" id="loc" name="loc" placeholder="Search location..." required />
+      <button id="search" type="button">Go!</button>
+    </form>
+
+    <div class="main">
+      <div id="location">
+        <span id="city"></span>,
+        <span id="region"></span>
+      </div>
+      <div id="time"></div>
+      <div id="temp"></div>
+      <div id="condition"></div>
+    </div>
+    <div class="details">
+      <div id="feelslike"></div>
+      <div id="wind">
+        <span id="wind_speed"></span>
+        <span id="wind_dir"></span>
+      </div>
+      <div id="precip"></div>
+      <div id="humidity"></div>
+    </div>
   </body>
 </html>

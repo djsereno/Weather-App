@@ -27,7 +27,9 @@
 - [x] Initialize the project
 - [x] Create functions to access weather API
 - [x] Create functions to process API data
-- [ ] Implement functionality to customize user location
+- [x] Implement functionality to customize user location
+- [x] Add location and weather info to DOM
+- [ ] Implement functionality to change units
 - [ ] Add some page styling
 - [ ] Add a loading screen
 
