@@ -19,23 +19,39 @@
         <span id="region"></span>
       </div>
       <div id="date"></div>
-      <div id="time"></div>
+      <div id="time" class="time"></div>
       <span><button type="button" id="time-12">12</button></span>
       <span><button type="button" id="time-24">24</button></span>
-      <div id="temp"></div>
+      <div id="temp-group" class="temp">
+        <span id="temp-imp" class="temp imp"></span>
+        <span id="temp-met" class="temp met"></span>
+      </div>
       <span><button type="button" id="units-imp">F</button></span>
       <span><button type="button" id="units-met">C</button></span>
       <div id="condition"></div>
     </div>
+    <br />
+
     <div class="details">
-      <div id="feelslike"></div>
+      <div id="feelslike-group" class="temp">
+        <span id="feelslike-imp" class="temp imp"></span>
+        <span id="feelslike-met" class="temp met"></span>
+      </div>
       <div id="wind">
-        <span id="wind_speed"></span>
+        <span id="wind_speed" class="speed">
+          <span id="wind_speed-imp" class="speed imp"></span>
+          <span id="wind_speed-met" class="speed met"></span>
+        </span>
         <span id="wind_dir"></span>
       </div>
-      <div id="precip"></div>
+      <div id="precip" class="length">
+        <span id="precip-imp" class="precip imp"></span>
+        <span id="precip-met" class="precip met"></span>
+      </div>
       <div id="humidity"></div>
     </div>
+    <br />
+
     <div id="forecast"></div>
   </body>
 </html>

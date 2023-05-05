@@ -19,8 +19,6 @@ const fetchWeather = async (location) => {
 
 const getWeather = async (loc = 'san francisco') => {
   const data = await fetchWeather(loc);
-  console.log(data);
-
   const locationData = { ...data.location };
   const weatherData = { ...data.current };
   const forecastData = { ...data.forecast.forecastday };

@@ -12,12 +12,17 @@ import titleCase from './helper-fns';
   const regionElem = document.querySelector('#region');
   const dateElem = document.querySelector('#date');
   const timeElem = document.querySelector('#time');
-  const tempElem = document.querySelector('#temp');
+
+  const tempImpElem = document.querySelector('#temp-imp');
+  const tempMetElem = document.querySelector('#temp-met');
   const conditionElem = document.querySelector('#condition');
-  const feelsLikeElem = document.querySelector('#feelslike');
-  const windSpeedElem = document.querySelector('#wind_speed');
+  const feelsLikeImpElem = document.querySelector('#feelslike-imp');
+  const feelsLikeMetElem = document.querySelector('#feelslike-met');
+  const windSpeedImpElem = document.querySelector('#wind_speed-imp');
+  const windSpeedMetElem = document.querySelector('#wind_speed-met');
   const windDirElem = document.querySelector('#wind_dir');
-  const precipElem = document.querySelector('#precip');
+  const precipImpElem = document.querySelector('#precip-imp');
+  const precipMetElem = document.querySelector('#precip-met');
   const humidityElem = document.querySelector('#humidity');
   const forecastElem = document.querySelector('#forecast');
 
@@ -37,18 +42,17 @@ import titleCase from './helper-fns';
     timeElem.innerText = format(date, 'p');
   };
 
-  const updateMeasureElems = (unitsFormat = 'imp') => {
+  const setMeasureVisibility = (unitsFormat = 'imp') => {
+    const imperialElems = document.querySelectorAll('.imp');
+    const metricElems = document.querySelectorAll('.met');
+
     if (unitsFormat === 'met') {
-      tempElem.innerText = `${results.weather.met.temp}°C`;
-      feelsLikeElem.innerText = `${results.weather.met.feelslike}°C`;
-      windSpeedElem.innerText = `${results.weather.met.wind_speed} kmh`;
-      precipElem.innerText = `${results.weather.met.precip} mm`;
+      imperialElems.forEach((elem) => elem.classList.add('hidden'));
+      metricElems.forEach((elem) => elem.classList.remove('hidden'));
       return;
     }
-    tempElem.innerText = `${results.weather.imp.temp}°F`;
-    feelsLikeElem.innerText = `${results.weather.imp.feelslike}°F`;
-    windSpeedElem.innerText = `${results.weather.imp.wind_speed} mph`;
-    precipElem.innerText = `${results.weather.imp.precip} in`;
+    imperialElems.forEach((elem) => elem.classList.remove('hidden'));
+    metricElems.forEach((elem) => elem.classList.add('hidden'));
   };
 
   const updateRealtimeDOM = () => {
@@ -60,11 +64,17 @@ import titleCase from './helper-fns';
     dateElem.innerText = format(date, 'PPPP');
     updateTimeElem(12);
 
-    conditionElem.innerText = weatherData.condition;
+    tempImpElem.innerText = `${results.weather.imp.temp}°F`;
+    tempMetElem.innerText = `${results.weather.met.temp}°C`;
     conditionElem.innerText = titleCase(weatherData.condition);
+    feelsLikeImpElem.innerText = `${results.weather.imp.feelslike}°F`;
+    feelsLikeMetElem.innerText = `${results.weather.met.feelslike}°C`;
+    windSpeedImpElem.innerText = `${results.weather.imp.wind_speed} mph`;
+    windSpeedMetElem.innerText = `${results.weather.met.wind_speed} kph`;
     windDirElem.innerText = weatherData.wind_dir;
     humidityElem.innerText = `${weatherData.humidity}%`;
-    updateMeasureElems('imp');
+    precipImpElem.innerText = `${results.weather.imp.precip} in`;
+    precipMetElem.innerText = `${results.weather.met.precip} mm`;
   };
 
   const updateForecastDOM = () => {
@@ -75,27 +85,43 @@ import titleCase from './helper-fns';
     results.forecast.forEach((day) => {
       const forecastCardElem = document.createElement('div');
       const dayElem = document.createElement('div');
-      const highTempForeElem = document.createElement('div');
-      const lowTempForeElem = document.createElement('div');
+      const highTempGroup = document.createElement('div');
+      const highTempForeImpElem = document.createElement('span');
+      const highTempForeMetElem = document.createElement('span');
+      const lowTempGroup = document.createElement('div');
+      const lowTempForeImpElem = document.createElement('span');
+      const lowTempForeMetElem = document.createElement('span');
       const conditionForeElem = document.createElement('div');
       const precipForeElem = document.createElement('div');
       const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
-      const weatherData = day.weather.imp;
+      const imperialData = day.weather.imp;
+      const metricData = day.weather.met;
 
       dayElem.innerText = format(forecastDate, 'cccc');
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
-      highTempForeElem.innerText = `${weatherData.maxtemp}°F`;
-      lowTempForeElem.innerText = `${weatherData.mintemp}°F`;
-      conditionForeElem.innerText = titleCase(weatherData.condition);
-      weatherData.daily_chance_of_snow > weatherData.daily_chance_of_rain
-        ? (precipForeElem.innerText = `${weatherData.daily_chance_of_snow}%`)
-        : (precipForeElem.innerText = `${weatherData.daily_chance_of_rain}%`);
+      highTempForeImpElem.innerText = `${imperialData.maxtemp}°F`;
+      highTempForeMetElem.innerText = `${metricData.maxtemp}°C`;
+      lowTempForeImpElem.innerText = `${imperialData.mintemp}°F`;
+      lowTempForeMetElem.innerText = `${metricData.mintemp}°C`;
+      conditionForeElem.innerText = titleCase(imperialData.condition);
+      imperialData.daily_chance_of_snow > imperialData.daily_chance_of_rain
+        ? (precipForeElem.innerText = `${imperialData.daily_chance_of_snow}%`)
+        : (precipForeElem.innerText = `${imperialData.daily_chance_of_rain}%`);
+
+      highTempForeImpElem.classList.add('temp', 'imp');
+      highTempForeMetElem.classList.add('temp', 'met');
+      lowTempForeImpElem.classList.add('temp', 'imp');
+      lowTempForeMetElem.classList.add('temp', 'met');
 
       forecastCardElem.appendChild(dayElem);
-      forecastCardElem.appendChild(highTempForeElem);
-      forecastCardElem.appendChild(lowTempForeElem);
+      forecastCardElem.appendChild(highTempGroup);
+      highTempGroup.appendChild(highTempForeImpElem);
+      highTempGroup.appendChild(highTempForeMetElem);
+      forecastCardElem.appendChild(lowTempGroup);
+      lowTempGroup.appendChild(lowTempForeImpElem);
+      lowTempGroup.appendChild(lowTempForeMetElem);
       forecastCardElem.appendChild(conditionForeElem);
       forecastCardElem.appendChild(precipForeElem);
       forecastElem.appendChild(forecastCardElem);
@@ -117,14 +143,15 @@ import titleCase from './helper-fns';
 
     updateRealtimeDOM();
     updateForecastDOM();
+    setMeasureVisibility();
   };
 
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
 
   time12Btn.addEventListener('click', () => updateTimeElem(12));
   time24Btn.addEventListener('click', () => updateTimeElem(24));
-  unitsImpBtn.addEventListener('click', () => updateMeasureElems('imp'));
-  unitsMetBtn.addEventListener('click', () => updateMeasureElems('met'));
+  unitsImpBtn.addEventListener('click', () => setMeasureVisibility('imp'));
+  unitsMetBtn.addEventListener('click', () => setMeasureVisibility('met'));
 
   handleSearch('seattle');
 })();
