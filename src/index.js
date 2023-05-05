@@ -1,6 +1,8 @@
 import './normalize.css';
 import './style.css';
+import { format } from 'date-fns';
 import getWeather from './weather';
+import titleCase from './helper-fns';
 
 (() => {
   const locInput = document.querySelector('#loc');
@@ -8,6 +10,7 @@ import getWeather from './weather';
 
   const cityElem = document.querySelector('#city');
   const regionElem = document.querySelector('#region');
+  const dateElem = document.querySelector('#date');
   const timeElem = document.querySelector('#time');
   const tempElem = document.querySelector('#temp');
   const conditionElem = document.querySelector('#condition');
@@ -20,10 +23,12 @@ import getWeather from './weather';
   const updateDOM = (results) => {
     cityElem.innerText = results.location.city;
     regionElem.innerText = results.location.region;
-    timeElem.innerText = results.location.time;
+    dateElem.innerText = format(results.location.date, 'PPPP');
+    timeElem.innerText = format(results.location.date, 'p');
 
     tempElem.innerText = `${results.weather.imp.temp}°`;
     conditionElem.innerText = results.weather.imp.condition;
+    conditionElem.innerText = titleCase(results.weather.imp.condition);
     feelsLikeElem.innerText = `${results.weather.imp.feelslike}°`;
     windSpeedElem.innerText = `${results.weather.imp.wind_speed} mph`;
     windDirElem.innerText = results.weather.imp.wind_dir;

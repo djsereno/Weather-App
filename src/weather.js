@@ -25,8 +25,9 @@ const getWeather = async (loc = 'san francisco') => {
     city: locationData.name,
     region: locationData.region,
     country: locationData.country,
-    time: locationData.localtime,
+    date: new Date(Date.parse(locationData.localtime)),
   };
+
   const weatherImperial = {
     temp: weatherData.temp_f,
     feelslike: weatherData.feelslike_f,

@@ -30,6 +30,7 @@
 - [x] Implement functionality to customize user location
 - [x] Add location and weather info to DOM
 - [ ] Implement functionality to change units
+- [ ] Add 3-day forecast
 - [ ] Add some page styling
 - [ ] Add a loading screen
 
