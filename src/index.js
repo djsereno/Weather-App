@@ -3,6 +3,7 @@ import './style.css';
 import { format, isToday, isTomorrow, parse } from 'date-fns';
 import getWeather from './weather';
 import titleCase from './helper-fns';
+import getSampleData from './sampledata';
 
 (() => {
   const locInput = document.querySelector('#loc');
@@ -110,7 +111,7 @@ import titleCase from './helper-fns';
         ? (precipForeElem.innerText = `${imperialData.daily_chance_of_snow}%`)
         : (precipForeElem.innerText = `${imperialData.daily_chance_of_rain}%`);
 
-        forecastCardElem.classList.add('card');
+      forecastCardElem.classList.add('card');
       highTempForeImpElem.classList.add('temp', 'imp');
       highTempForeMetElem.classList.add('temp', 'met');
       lowTempForeImpElem.classList.add('temp', 'imp');
@@ -138,8 +139,7 @@ import titleCase from './helper-fns';
     if (useAPI) {
       results = await getWeather(location);
     } else {
-      const response = await fetch('./sampledata.json');
-      results = await response.json();
+      results = await getSampleData();
     }
 
     updateRealtimeDOM();

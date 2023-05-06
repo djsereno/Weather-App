@@ -57,3 +57,11 @@ button.unit-toggle:hover {
 button:hover {
   cursor: pointer;
 }
+
+#forecast {
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+}
