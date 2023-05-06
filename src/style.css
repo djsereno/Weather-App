@@ -1,7 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .hidden {
   display: none;
+}
+
+#location {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#temp-group {
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+#condition {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.unit-toggle-group {
+  font-size: 1rem;
+  color: #adadad;
+}
+
+.card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  border-radius: 5px;
+  max-width: max-content;
+}
+
+button.unit-toggle {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #adadad;
+}
+
+button.unit-toggle:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  cursor: pointer;
 }

@@ -97,7 +97,7 @@ import titleCase from './helper-fns';
       const imperialData = day.weather.imp;
       const metricData = day.weather.met;
 
-      dayElem.innerText = format(forecastDate, 'cccc');
+      dayElem.innerText = format(forecastDate, 'ccc d');
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
@@ -110,6 +110,7 @@ import titleCase from './helper-fns';
         ? (precipForeElem.innerText = `${imperialData.daily_chance_of_snow}%`)
         : (precipForeElem.innerText = `${imperialData.daily_chance_of_rain}%`);
 
+        forecastCardElem.classList.add('card');
       highTempForeImpElem.classList.add('temp', 'imp');
       highTempForeMetElem.classList.add('temp', 'met');
       lowTempForeImpElem.classList.add('temp', 'imp');

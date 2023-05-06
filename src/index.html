@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/e89148c565.js" crossorigin="anonymous"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -13,42 +14,64 @@
       <button id="search" type="button">Go!</button>
     </form>
 
-    <div class="main">
-      <div id="location">
-        <span id="city"></span>,
-        <span id="region"></span>
-      </div>
+    <div id="location">
+      <span id="city"></span>,
+      <span id="region"></span>
+    </div>
+
+    <div id="main" class="card">
+      <h2>Current Weather</h2>
       <div id="date"></div>
-      <div id="time" class="time"></div>
-      <span><button type="button" id="time-12">12</button></span>
-      <span><button type="button" id="time-24">24</button></span>
+      <div id="time-group">
+        <span id="time" class="time"></span>
+        <span class="unit-toggle-group">
+          <button type="button" id="time-12" class="unit-toggle">12h</button> |
+          <button type="button" id="time-24" class="unit-toggle">24h</button>
+        </span>
+      </div>
       <div id="temp-group" class="temp">
         <span id="temp-imp" class="temp imp"></span>
         <span id="temp-met" class="temp met"></span>
+        <span class="unit-toggle-group">
+          <button type="button" id="units-imp" class="unit-toggle">F</button> |
+          <button type="button" id="units-met" class="unit-toggle">C</button>
+        </span>
       </div>
-      <span><button type="button" id="units-imp">F</button></span>
-      <span><button type="button" id="units-met">C</button></span>
       <div id="condition"></div>
     </div>
     <br />
 
-    <div class="details">
+    <div id="details" class="card">
       <div id="feelslike-group" class="temp">
-        <span id="feelslike-imp" class="temp imp"></span>
-        <span id="feelslike-met" class="temp met"></span>
+        <i class="fa-solid fa-temperature-half"></i>
+        Feels Like:
+        <span>
+          <span id="feelslike-imp" class="temp imp"></span>
+          <span id="feelslike-met" class="temp met"></span>
+        </span>
       </div>
       <div id="wind">
-        <span id="wind_speed" class="speed">
+        <i class="fa-solid fa-wind"></i>
+        Wind:
+        <span>
           <span id="wind_speed-imp" class="speed imp"></span>
           <span id="wind_speed-met" class="speed met"></span>
         </span>
         <span id="wind_dir"></span>
       </div>
       <div id="precip" class="length">
-        <span id="precip-imp" class="precip imp"></span>
-        <span id="precip-met" class="precip met"></span>
+        <i class="fa-solid fa-umbrella"></i>
+        Precipitation:
+        <span>
+          <span id="precip-imp" class="precip imp"></span>
+          <span id="precip-met" class="precip met"></span>
+        </span>
       </div>
-      <div id="humidity"></div>
+      <div>
+        <i class="fa-solid fa-droplet"></i>
+        Humidity:
+        <span id="humidity"></span>
+      </div>
     </div>
     <br />
 
