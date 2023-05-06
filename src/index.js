@@ -75,6 +75,9 @@ import getSampleData from './sampledata';
     humidityElem.innerText = `${results.weather.humidity}%`;
     precipImpElem.innerText = `${results.weather.precip.imp} in`;
     precipMetElem.innerText = `${results.weather.precip.met} mm`;
+
+    const windDirIcon = document.querySelector('#wind-dir-icon');
+    windDirIcon.style.transform = `rotate(${results.weather.wind_degree - 45}deg)`;
   };
 
   const updateForecastDOM = () => {
