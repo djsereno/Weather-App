@@ -58,24 +58,23 @@ import getSampleData from './sampledata';
 
   const updateRealtimeDOM = () => {
     date = new Date(Date.parse(results.location.date));
-    const weatherData = results.weather.imp;
 
     cityElem.innerText = results.location.city;
     regionElem.innerText = results.location.region;
     dateElem.innerText = format(date, 'PPPP');
     updateTimeElem(12);
 
-    tempImpElem.innerText = `${results.weather.imp.temp}°F`;
-    tempMetElem.innerText = `${results.weather.met.temp}°C`;
-    conditionElem.innerText = titleCase(weatherData.condition);
-    feelsLikeImpElem.innerText = `${results.weather.imp.feelslike}°F`;
-    feelsLikeMetElem.innerText = `${results.weather.met.feelslike}°C`;
-    windSpeedImpElem.innerText = `${results.weather.imp.wind_speed} mph`;
-    windSpeedMetElem.innerText = `${results.weather.met.wind_speed} kph`;
-    windDirElem.innerText = weatherData.wind_dir;
-    humidityElem.innerText = `${weatherData.humidity}%`;
-    precipImpElem.innerText = `${results.weather.imp.precip} in`;
-    precipMetElem.innerText = `${results.weather.met.precip} mm`;
+    tempImpElem.innerText = `${results.weather.temp.imp}°F`;
+    tempMetElem.innerText = `${results.weather.temp.met}°C`;
+    conditionElem.innerText = titleCase(results.weather.condition.text);
+    feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
+    feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
+    windSpeedImpElem.innerText = `${results.weather.wind_speed.imp} mph`;
+    windSpeedMetElem.innerText = `${results.weather.wind_speed.met} kph`;
+    windDirElem.innerText = results.weather.wind_dir;
+    humidityElem.innerText = `${results.weather.humidity}%`;
+    precipImpElem.innerText = `${results.weather.precip.imp} in`;
+    precipMetElem.innerText = `${results.weather.precip.met} mm`;
   };
 
   const updateForecastDOM = () => {
@@ -95,21 +94,20 @@ import getSampleData from './sampledata';
       const conditionForeElem = document.createElement('div');
       const precipForeElem = document.createElement('div');
       const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
-      const imperialData = day.weather.imp;
-      const metricData = day.weather.met;
+      const forecastWeather = day.weather;
 
       dayElem.innerText = format(forecastDate, 'ccc d');
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
-      highTempForeImpElem.innerText = `${imperialData.maxtemp}°F`;
-      highTempForeMetElem.innerText = `${metricData.maxtemp}°C`;
-      lowTempForeImpElem.innerText = `${imperialData.mintemp}°F`;
-      lowTempForeMetElem.innerText = `${metricData.mintemp}°C`;
-      conditionForeElem.innerText = titleCase(imperialData.condition);
-      imperialData.daily_chance_of_snow > imperialData.daily_chance_of_rain
-        ? (precipForeElem.innerText = `${imperialData.daily_chance_of_snow}%`)
-        : (precipForeElem.innerText = `${imperialData.daily_chance_of_rain}%`);
+      highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°F`;
+      highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°C`;
+      lowTempForeImpElem.innerText = `${forecastWeather.mintemp.imp}°F`;
+      lowTempForeMetElem.innerText = `${forecastWeather.mintemp.met}°C`;
+      conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
+      forecastWeather.daily_chance_of_snow > forecastWeather.daily_chance_of_rain
+        ? (precipForeElem.innerText = `${forecastWeather.daily_chance_of_snow}%`)
+        : (precipForeElem.innerText = `${forecastWeather.daily_chance_of_rain}%`);
 
       forecastCardElem.classList.add('card');
       highTempForeImpElem.classList.add('temp', 'imp');
@@ -135,11 +133,13 @@ import getSampleData from './sampledata';
     locInput.value = '';
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = true;
+    const useAPI = false;
     if (useAPI) {
       results = await getWeather(location);
+      // console.log(JSON.stringify(results));
     } else {
       results = await getSampleData();
+      console.log(results);
     }
 
     updateRealtimeDOM();
