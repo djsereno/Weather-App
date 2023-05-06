@@ -31,7 +31,9 @@
 - [x] Add location and weather info to DOM
 - [x] Implement functionality to change units
 - [x] Add forecast
+- [x] Add weather icons from API
 - [ ] Add some page styling
+- [ ] Add better weather icons
 - [ ] Add a loading screen
 
 ## Built With

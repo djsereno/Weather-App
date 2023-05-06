@@ -65,3 +65,17 @@ button:hover {
 .flex-container {
   display: flex;
 }
+
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
+}
+
+#condition-icon {
+  height: auto;
+  width: 100%;
+}
+
+.img-container {
+  min-width: 100px;
+}

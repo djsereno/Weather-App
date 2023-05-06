@@ -17,6 +17,7 @@ import getSampleData from './sampledata';
   const tempImpElem = document.querySelector('#temp-imp');
   const tempMetElem = document.querySelector('#temp-met');
   const conditionElem = document.querySelector('#condition');
+  const conditionIcon = document.querySelector('#condition-icon');
   const feelsLikeImpElem = document.querySelector('#feelslike-imp');
   const feelsLikeMetElem = document.querySelector('#feelslike-met');
   const windSpeedImpElem = document.querySelector('#wind_speed-imp');
@@ -67,6 +68,8 @@ import getSampleData from './sampledata';
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
     conditionElem.innerText = titleCase(results.weather.condition.text);
+    conditionIcon.setAttribute('src', results.weather.condition.icon);
+
     feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
     windSpeedImpElem.innerText = `${results.weather.wind_speed.imp} mph`;
@@ -95,6 +98,8 @@ import getSampleData from './sampledata';
       const lowTempForeImpElem = document.createElement('span');
       const lowTempForeMetElem = document.createElement('span');
       const conditionForeElem = document.createElement('div');
+      const conditionForeIcon = document.createElement('img');
+
       const precipForeElem = document.createElement('div');
       const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
       const forecastWeather = day.weather;
@@ -103,11 +108,14 @@ import getSampleData from './sampledata';
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
+      conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
+      conditionForeIcon.setAttribute('src', forecastWeather.condition.icon);
+
       highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°F`;
       highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°C`;
       lowTempForeImpElem.innerText = `${forecastWeather.mintemp.imp}°F`;
       lowTempForeMetElem.innerText = `${forecastWeather.mintemp.met}°C`;
-      conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
+
       forecastWeather.daily_chance_of_snow > forecastWeather.daily_chance_of_rain
         ? (precipForeElem.innerText = `${forecastWeather.daily_chance_of_snow}%`)
         : (precipForeElem.innerText = `${forecastWeather.daily_chance_of_rain}%`);
@@ -119,13 +127,14 @@ import getSampleData from './sampledata';
       lowTempForeMetElem.classList.add('temp', 'met');
 
       forecastCardElem.appendChild(dayElem);
+      forecastCardElem.appendChild(conditionForeIcon);
+      forecastCardElem.appendChild(conditionForeElem);
       forecastCardElem.appendChild(highTempGroup);
       highTempGroup.appendChild(highTempForeImpElem);
       highTempGroup.appendChild(highTempForeMetElem);
       forecastCardElem.appendChild(lowTempGroup);
       lowTempGroup.appendChild(lowTempForeImpElem);
       lowTempGroup.appendChild(lowTempForeMetElem);
-      forecastCardElem.appendChild(conditionForeElem);
       forecastCardElem.appendChild(precipForeElem);
       forecastElem.appendChild(forecastCardElem);
     });
