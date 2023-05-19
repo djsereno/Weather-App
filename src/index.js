@@ -129,7 +129,7 @@ import getSampleData from './sampledata';
       precipGroup.appendChild(precipForeIcon);
       precipGroup.appendChild(precipForeElem);
 
-      forecastCardElem.classList.add('card');
+      forecastCardElem.classList.add('card', 'flex-col');
       dayElem.classList.add('day');
       conditionForeIcon.classList.add('forecast-icon');
       // conditionForeElem.classList.add('condition-text');

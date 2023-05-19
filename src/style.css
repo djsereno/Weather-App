@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', system-ui;
   font-size: 1.125rem;
   line-height: 1.5;
+  background-color: rgb(99, 174, 244);
 }
 
 main {
@@ -17,13 +18,31 @@ main {
   margin-inline: auto;
 }
 
+.card {
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
 .hidden {
   display: none;
 }
 
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+#current-weather {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 #location {
-  margin: 0;
-  padding: 0;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -41,15 +60,6 @@ main {
 .unit-toggle-group {
   font-size: 1rem;
   color: #adadad;
-}
-
-.card {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid red;
-  border-radius: 5px;
-  max-width: max-content;
 }
 
 button.unit-toggle {
@@ -75,13 +85,16 @@ button:hover {
 }
 
 #forecast .card {
-  max-width: 100%;
   align-items: center;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  gap: 5px;
 }
 
 .day {
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 300;
 }
 
 .high-low {
@@ -89,18 +102,20 @@ button:hover {
   gap: 1ch;
 }
 
+.low-temp,
+.high-temp {
+  font-weight: 500;
+}
+
 .low-temp {
-  color: #adadad;
+  opacity: 0.3;
 }
 
-.flex-container {
-  display: flex;
+.precipitation {
+  font-size: 0.7em;
 }
 
-.flex-container-col {
-  display: flex;
-  flex-direction: column;
-}
+
 
 #condition-icon {
   height: auto;
@@ -108,5 +123,5 @@ button:hover {
 }
 
 .img-container {
-  min-width: 100px;
+  max-width: 100px;
 }

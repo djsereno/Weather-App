@@ -52,3 +52,5 @@ Project Link: [https://github.com/djsereno/Weather-App/](https://github.com/djse
 
 - Icons by [Vecteezy.com](https://www.vecteezy.com/)
 - Favicon by [icons8](https://icons8.com/)
+- Background images by:
+  - [Rafael Garcin](https://unsplash.com/@nimbus_vulpis) on [Unsplash](https://unsplash.com/)
