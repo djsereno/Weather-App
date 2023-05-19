@@ -2,9 +2,20 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Roboto', system-ui;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+main {
+  width: min(1000px, 100% - 4rem);
+  margin-inline: auto;
+  background-color: #adadad;
 }
 
 .hidden {
@@ -59,7 +70,13 @@ button:hover {
 }
 
 #forecast {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+#forecast .card {
+  max-width: 100%;
 }
 
 .flex-container {
