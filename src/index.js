@@ -91,16 +91,19 @@ import getSampleData from './sampledata';
     results.forecast.forEach((day) => {
       const forecastCardElem = document.createElement('div');
       const dayElem = document.createElement('div');
-      const highTempGroup = document.createElement('div');
+      const conditionForeIcon = document.createElement('img');
+      // const conditionForeElem = document.createElement('div');
+      const highLowGroup = document.createElement('div');
+      const highTempGroup = document.createElement('span');
       const highTempForeImpElem = document.createElement('span');
       const highTempForeMetElem = document.createElement('span');
-      const lowTempGroup = document.createElement('div');
+      const lowTempGroup = document.createElement('span');
       const lowTempForeImpElem = document.createElement('span');
       const lowTempForeMetElem = document.createElement('span');
-      const conditionForeElem = document.createElement('div');
-      const conditionForeIcon = document.createElement('img');
+      const precipGroup = document.createElement('div');
+      const precipForeIcon = document.createElement('i');
+      const precipForeElem = document.createElement('span');
 
-      const precipForeElem = document.createElement('div');
       const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
       const forecastWeather = day.weather;
 
@@ -108,34 +111,55 @@ import getSampleData from './sampledata';
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
-      conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
       conditionForeIcon.setAttribute('src', forecastWeather.condition.icon);
+      // conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
 
-      highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°F`;
-      highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°C`;
-      lowTempForeImpElem.innerText = `${forecastWeather.mintemp.imp}°F`;
-      lowTempForeMetElem.innerText = `${forecastWeather.mintemp.met}°C`;
+      highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°`;
+      highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°`;
+      lowTempForeImpElem.innerText = `${forecastWeather.mintemp.imp}°`;
+      lowTempForeMetElem.innerText = `${forecastWeather.mintemp.met}°`;
 
-      forecastWeather.daily_chance_of_snow > forecastWeather.daily_chance_of_rain
-        ? (precipForeElem.innerText = `${forecastWeather.daily_chance_of_snow}%`)
-        : (precipForeElem.innerText = `${forecastWeather.daily_chance_of_rain}%`);
+      if (forecastWeather.daily_chance_of_snow > forecastWeather.daily_chance_of_rain) {
+        precipForeIcon.classList.add('fa-regular', 'fa-snowflake');
+        precipForeElem.innerText = ` ${forecastWeather.daily_chance_of_snow}%`;
+      } else if (forecastWeather.daily_chance_of_rain !== 0) {
+        precipForeIcon.classList.add('fa-solid', 'fa-cloud-rain');
+        precipForeElem.innerText = ` ${forecastWeather.daily_chance_of_rain}%`;
+      }
+      precipGroup.appendChild(precipForeIcon);
+      precipGroup.appendChild(precipForeElem);
 
       forecastCardElem.classList.add('card');
+      dayElem.classList.add('day');
+      conditionForeIcon.classList.add('forecast-icon');
+      // conditionForeElem.classList.add('condition-text');
+      highLowGroup.classList.add('high-low');
+      highTempGroup.classList.add('high-temp');
       highTempForeImpElem.classList.add('temp', 'imp');
       highTempForeMetElem.classList.add('temp', 'met');
+      lowTempGroup.classList.add('low-temp');
       lowTempForeImpElem.classList.add('temp', 'imp');
       lowTempForeMetElem.classList.add('temp', 'met');
+      precipGroup.classList.add('precipitation');
+
+      // const highTempForeIcon = document.createElement('i');
+      // const lowTempForeIcon = document.createElement('i');
+      // highTempForeIcon.classList.add('fa-solid', 'fa-arrow-up-long');
+      // lowTempForeIcon.classList.add('fa-solid', 'fa-arrow-down-long');
+      // highTempGroup.appendChild(highTempForeIcon);
+      // lowTempGroup.appendChild(lowTempForeIcon);
 
       forecastCardElem.appendChild(dayElem);
       forecastCardElem.appendChild(conditionForeIcon);
-      forecastCardElem.appendChild(conditionForeElem);
-      forecastCardElem.appendChild(highTempGroup);
+      // forecastCardElem.appendChild(conditionForeElem);
+      forecastCardElem.appendChild(highLowGroup);
+      highLowGroup.appendChild(highTempGroup);
       highTempGroup.appendChild(highTempForeImpElem);
       highTempGroup.appendChild(highTempForeMetElem);
-      forecastCardElem.appendChild(lowTempGroup);
+      highLowGroup.appendChild(lowTempGroup);
       lowTempGroup.appendChild(lowTempForeImpElem);
       lowTempGroup.appendChild(lowTempForeMetElem);
-      forecastCardElem.appendChild(precipForeElem);
+      forecastCardElem.appendChild(precipGroup);
       forecastElem.appendChild(forecastCardElem);
     });
   };

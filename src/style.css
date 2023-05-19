@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -15,7 +15,6 @@ body {
 main {
   width: min(1000px, 100% - 4rem);
   margin-inline: auto;
-  background-color: #adadad;
 }
 
 .hidden {
@@ -77,6 +76,21 @@ button:hover {
 
 #forecast .card {
   max-width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.day {
+  font-weight: 500;
+}
+
+.high-low {
+  display: flex;
+  gap: 1ch;
+}
+
+.low-temp {
+  color: #adadad;
 }
 
 .flex-container {
