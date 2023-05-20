@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -13,6 +14,14 @@ module.exports = {
       template: 'src/index.html',
     }),
     new ESLintPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/images'),
+          to: path.resolve(__dirname, 'dist/images'),
+        },
+      ],
+    }),
   ],
   output: {
     filename: '[name].bundle.js',
