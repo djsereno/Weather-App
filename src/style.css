@@ -7,6 +7,8 @@
   --fs-400: 1.125rem;
   --fs-300: 0.8rem;
 
+  --clr-primary: white;
+
   --blur-intensity: 0px;
 }
 
@@ -26,7 +28,7 @@ body {
 }
 
 main {
-  width: min(1000px, 100% - 4rem);
+  width: min(1200px, 100% - 4rem);
   margin-top: 5rem;
   margin-inline: auto;
 }
@@ -86,7 +88,20 @@ main {
 }
 
 #location {
+  display: flex;
+  gap: 1ch;
+}
+
+#loc,
+#search {
   font-weight: bold;
+  background: transparent;
+  border: none;
+  color: var(--clr-primary);
+}
+
+#loc {
+  width: 100%;
 }
 
 #date,
@@ -102,7 +117,7 @@ main {
 button.unit-toggle {
   border: none;
   background-color: transparent;
-  color: white;
+  color: var(--clr-primary);
 }
 
 button.unit-toggle:hover {
@@ -140,7 +155,7 @@ button:hover {
 
 .unit-toggle-group {
   font-size: var(--fs-400);
-  color: white;
+  color: var(--clr-primary);
   opacity: 0.4;
 }
 

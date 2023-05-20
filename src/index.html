@@ -9,16 +9,18 @@
   </head>
   <body>
     <div class="bg">
-      <img src="./images/cloudy-night.jpg" alt="">
+      <img src="./images/clear-day.jpg" alt="" />
     </div>
     <main>
       <div id="current-weather" class="card">
         <div id="main" class="flex-col">
-          <div id="location">
+          <form action="" id="location">
             <i class="fa-solid fa-location-dot"></i>
-            <span id="city"></span>,
-            <span id="region"></span>
-          </div>
+            <input type="text" id="loc" name="loc" placeholder="Search location..." required />
+            <button id="search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+          <!-- <span id="city"></span>,
+            <span id="region"></span> -->
           <div id="date"></div>
           <div id="time-group">
             <span id="time" class="time"></span>
@@ -76,12 +78,6 @@
       </div>
 
       <div id="forecast"></div>
-
-      <form action="">
-        <input type="text" id="loc" name="loc" placeholder="Search location..." required />
-        <button id="search" type="button">Go!</button>
-      </form>
-      
     </main>
   </body>
 </html>

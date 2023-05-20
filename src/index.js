@@ -9,8 +9,8 @@ import getSampleData from './sampledata';
   const locInput = document.querySelector('#loc');
   const searchBtn = document.querySelector('#search');
 
-  const cityElem = document.querySelector('#city');
-  const regionElem = document.querySelector('#region');
+  // const cityElem = document.querySelector('#city');
+  // const regionElem = document.querySelector('#region');
   const dateElem = document.querySelector('#date');
   const timeElem = document.querySelector('#time');
 
@@ -60,8 +60,10 @@ import getSampleData from './sampledata';
   const updateRealtimeDOM = () => {
     date = new Date(Date.parse(results.location.date));
 
-    cityElem.innerText = results.location.city;
-    regionElem.innerText = results.location.region;
+    locInput.value = `${results.location.city}, ${results.location.region}`
+
+    // cityElem.innerText = results.location.city;
+    // regionElem.innerText = results.location.region;
     dateElem.innerText = format(date, 'PPPP');
     updateTimeElem(12);
 
@@ -155,10 +157,10 @@ import getSampleData from './sampledata';
 
   const handleSearch = async (location) => {
     if (!location) return;
-    locInput.value = '';
+    // locInput.value = '';
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = false;
+    const useAPI = true;
     if (useAPI) {
       results = await getWeather(location);
       // console.log(JSON.stringify(results));
