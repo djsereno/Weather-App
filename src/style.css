@@ -11,6 +11,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.5;
   background-color: rgb(99, 174, 244);
+  color: white;
 }
 
 main {
@@ -35,39 +36,63 @@ main {
 .flex-col {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 #current-weather {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  font-size: 1.5rem;
+  justify-items: center;
+}
+
+#current-weather > * {
+  width: max-content;
 }
 
 #location {
-  font-size: 2rem;
   font-weight: bold;
+}
+
+#date,
+#time-group,
+#details {
+  font-weight: 300;
 }
 
 #temp-group {
-  font-weight: bold;
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 #condition {
-  font-weight: bold;
+  font-weight: 300;
   font-size: 2rem;
+  text-align: center;
+}
+
+#details {
+  line-height: 1.8;
+}
+
+.detail-group > i:first-child {
+  width: 3ch;
+}
+
+.detail-group > #wind_dir {
+  margin-right: 1ch;
 }
 
 .unit-toggle-group {
-  font-size: 1rem;
-  color: #adadad;
+  font-size: 0.9rem;
+  color: white;
+  opacity: 0.6;
 }
 
 button.unit-toggle {
-  margin: 0;
-  padding: 0;
   border: none;
   background-color: transparent;
-  color: #adadad;
+  color: white;
 }
 
 button.unit-toggle:hover {
@@ -88,7 +113,7 @@ button:hover {
   align-items: center;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
-  color: white;
+  justify-content: start;
   gap: 5px;
 }
 
@@ -102,20 +127,19 @@ button:hover {
   gap: 1ch;
 }
 
-.low-temp,
 .high-temp {
   font-weight: 500;
 }
 
 .low-temp {
-  opacity: 0.3;
+  font-weight: 300;
+  opacity: 0.6;
 }
 
 .precipitation {
   font-size: 0.7em;
+  opacity: 0.6;
 }
-
-
 
 #condition-icon {
   height: auto;
@@ -123,5 +147,6 @@ button:hover {
 }
 
 .img-container {
-  max-width: 100px;
+  max-width: 200px;
+  margin: auto;
 }
