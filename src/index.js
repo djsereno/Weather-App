@@ -183,9 +183,18 @@ import getSampleData from './sampledata';
     searchBtn.classList.remove('visible');
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      document.activeElement.blur();
+      handleSearch(locInput.value);
+    }
+  };
+
   locInput.addEventListener('focusin', () => clearInput());
   locInput.addEventListener('focusout', () => undoClearInput());
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
+  document.addEventListener('keydown', (event) => handleKeyDown(event));
 
   time12Btn.addEventListener('click', () => updateTimeElem(12));
   time24Btn.addEventListener('click', () => updateTimeElem(24));
