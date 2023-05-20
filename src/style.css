@@ -66,6 +66,7 @@ main {
 
 .hidden {
   display: none;
+  opacity: 0;
 }
 
 .flex-row {
@@ -88,7 +89,8 @@ main {
 }
 
 #location {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto 1em;
   gap: 1ch;
 }
 
@@ -100,8 +102,37 @@ main {
   color: var(--clr-primary);
 }
 
+#loc:focus-visible,
+#search:focus-visible {
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 #loc {
+  text-overflow: ellipsis;
   width: 100%;
+}
+
+#loc:hover:not(:focus) {
+  text-decoration: underline;
+}
+
+#loc::placeholder {
+  color: var(--clr-primary);
+  font-weight: 300;
+  opacity: 0.4;
+}
+
+#search {
+  visibility: hidden;
+  font-size: 0.1em;
+  transition: font-size 0.3s 0s, visibility 0s 0.3s;
+}
+#search.visible {
+  transition: visibility 0s, font-size 0.3s;
+  visibility: visible;
+  font-size: 0.9em;
 }
 
 #date,
@@ -112,6 +143,12 @@ main {
 
 #temp-group {
   font-size: var(--fs-xl);
+}
+
+.unit-toggle-group {
+  font-size: var(--fs-400);
+  color: var(--clr-primary);
+  opacity: 0.4;
 }
 
 button.unit-toggle {
@@ -151,12 +188,6 @@ button:hover {
 
 .detail-group > #wind_dir {
   margin-right: 1ch;
-}
-
-.unit-toggle-group {
-  font-size: var(--fs-400);
-  color: var(--clr-primary);
-  opacity: 0.4;
 }
 
 #forecast {

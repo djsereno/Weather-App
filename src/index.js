@@ -60,10 +60,8 @@ import getSampleData from './sampledata';
   const updateRealtimeDOM = () => {
     date = new Date(Date.parse(results.location.date));
 
-    locInput.value = `${results.location.city}, ${results.location.region}`
+    locInput.value = `${results.location.city}, ${results.location.region}`;
 
-    // cityElem.innerText = results.location.city;
-    // regionElem.innerText = results.location.region;
     dateElem.innerText = format(date, 'PPPP');
     updateTimeElem(12);
 
@@ -157,7 +155,6 @@ import getSampleData from './sampledata';
 
   const handleSearch = async (location) => {
     if (!location) return;
-    // locInput.value = '';
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
     const useAPI = true;
@@ -172,8 +169,22 @@ import getSampleData from './sampledata';
     updateRealtimeDOM();
     updateForecastDOM();
     setMeasureVisibility();
+    searchBtn.classList.remove('visible');
   };
 
+  const clearInput = () => {
+    locInput.value = '';
+    searchBtn.classList.add('visible');
+  };
+
+  const undoClearInput = () => {
+    if (locInput.value !== '') return;
+    locInput.value = `${results.location.city}, ${results.location.region}`;
+    searchBtn.classList.remove('visible');
+  };
+
+  locInput.addEventListener('focusin', () => clearInput());
+  locInput.addEventListener('focusout', () => undoClearInput());
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
 
   time12Btn.addEventListener('click', () => updateTimeElem(12));
