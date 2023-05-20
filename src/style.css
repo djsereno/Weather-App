@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-* {
+:root {
+  --fs-xl: 5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.5rem;
+  --fs-400: 1.125rem;
+  --fs-300: 0.8rem;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,7 +18,7 @@
 
 body {
   font-family: 'Roboto', system-ui;
-  font-size: 1.125rem;
+  font-size: var(--fs-400);
   line-height: 1.5;
   background-color: rgb(99, 174, 244);
   color: white;
@@ -43,7 +53,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 3rem;
-  font-size: 1.5rem;
+  font-size: var(--fs-500);
   justify-items: center;
 }
 
@@ -62,12 +72,12 @@ main {
 }
 
 #temp-group {
-  font-size: 5rem;
+  font-size: var(--fs-xl);
 }
 
 #condition {
   font-weight: 300;
-  font-size: 2rem;
+  font-size: var(--fs-600);
   text-align: center;
 }
 
@@ -84,9 +94,9 @@ main {
 }
 
 .unit-toggle-group {
-  font-size: 0.9rem;
+  font-size: var(--fs-400);
   color: white;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 button.unit-toggle {
@@ -118,7 +128,6 @@ button:hover {
 }
 
 .day {
-  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -137,7 +146,7 @@ button:hover {
 }
 
 .precipitation {
-  font-size: 0.7em;
+  font-size: var(--fs-300);
   opacity: 0.6;
 }
 
