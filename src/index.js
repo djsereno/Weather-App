@@ -92,7 +92,6 @@ import getSampleData from './sampledata';
       const forecastCardElem = document.createElement('div');
       const dayElem = document.createElement('div');
       const conditionForeIcon = document.createElement('img');
-      // const conditionForeElem = document.createElement('div');
       const highLowGroup = document.createElement('div');
       const highTempGroup = document.createElement('span');
       const highTempForeImpElem = document.createElement('span');
@@ -112,7 +111,6 @@ import getSampleData from './sampledata';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
       conditionForeIcon.setAttribute('src', forecastWeather.condition.icon);
-      // conditionForeElem.innerText = titleCase(forecastWeather.condition.text);
 
       highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°`;
       highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°`;
@@ -132,7 +130,6 @@ import getSampleData from './sampledata';
       forecastCardElem.classList.add('card', 'flex-col');
       dayElem.classList.add('day');
       conditionForeIcon.classList.add('forecast-icon');
-      // conditionForeElem.classList.add('condition-text');
       highLowGroup.classList.add('high-low');
       highTempGroup.classList.add('high-temp');
       highTempForeImpElem.classList.add('temp', 'imp');
@@ -142,16 +139,8 @@ import getSampleData from './sampledata';
       lowTempForeMetElem.classList.add('temp', 'met');
       precipGroup.classList.add('precipitation');
 
-      // const highTempForeIcon = document.createElement('i');
-      // const lowTempForeIcon = document.createElement('i');
-      // highTempForeIcon.classList.add('fa-solid', 'fa-arrow-up-long');
-      // lowTempForeIcon.classList.add('fa-solid', 'fa-arrow-down-long');
-      // highTempGroup.appendChild(highTempForeIcon);
-      // lowTempGroup.appendChild(lowTempForeIcon);
-
       forecastCardElem.appendChild(dayElem);
       forecastCardElem.appendChild(conditionForeIcon);
-      // forecastCardElem.appendChild(conditionForeElem);
       forecastCardElem.appendChild(highLowGroup);
       highLowGroup.appendChild(highTempGroup);
       highTempGroup.appendChild(highTempForeImpElem);

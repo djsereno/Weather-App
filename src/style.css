@@ -11,22 +11,27 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
+  background-color: rgb(99, 174, 244);
   font-family: 'Roboto', system-ui;
   font-size: var(--fs-400);
-  line-height: 1.5;
-  background-color: rgb(99, 174, 244);
   color: white;
+  line-height: 1.5;
 }
 
 main {
   width: min(1000px, 100% - 4rem);
+  margin-top: 5rem;
   margin-inline: auto;
+}
+
+form {
+  display: none;
 }
 
 .card {
@@ -52,13 +57,9 @@ main {
 #current-weather {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
-  font-size: var(--fs-500);
   justify-items: center;
-}
-
-#current-weather > * {
-  width: max-content;
+  font-size: var(--fs-500);
+  gap: 3rem;
 }
 
 #location {
@@ -75,10 +76,31 @@ main {
   font-size: var(--fs-xl);
 }
 
-#condition {
+button.unit-toggle {
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+button.unit-toggle:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#current-condition {
+  width: 100%;
+  font-size: var(--fs-500);
   font-weight: 300;
-  font-size: var(--fs-600);
+  font-weight: bold;
   text-align: center;
+}
+
+#condition-icon {
+  width: min(200px, 100%);
+  height: auto;
 }
 
 #details {
@@ -99,36 +121,27 @@ main {
   opacity: 0.4;
 }
 
-button.unit-toggle {
-  border: none;
-  background-color: transparent;
-  color: white;
-}
-
-button.unit-toggle:hover {
-  text-decoration: underline;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
 #forecast {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  margin-top: 5rem;
   gap: 5px;
 }
 
 #forecast .card {
   align-items: center;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.1);
   justify-content: start;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
   gap: 5px;
 }
 
 .day {
   font-weight: 300;
+}
+
+.forecast-icon {
+  width: min(200px, 100%);
 }
 
 .high-low {
@@ -148,14 +161,4 @@ button:hover {
 .precipitation {
   font-size: var(--fs-300);
   opacity: 0.6;
-}
-
-#condition-icon {
-  height: auto;
-  width: 100%;
-}
-
-.img-container {
-  max-width: 200px;
-  margin: auto;
 }

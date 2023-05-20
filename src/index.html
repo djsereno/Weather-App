@@ -9,11 +9,6 @@
   </head>
   <body>
     <main>
-      <form action="">
-        <input type="text" id="loc" name="loc" placeholder="Search location..." required />
-        <button id="search" type="button">Go!</button>
-      </form>
-
       <div id="current-weather" class="card">
         <div id="main" class="flex-col">
           <div id="location">
@@ -38,12 +33,14 @@
             </div>
           </div>
         </div>
-        <div class="current-condition">
+
+        <div id="current-condition">
           <div class="img-container"><img id="condition-icon" src="" alt="" /></div>
           <div class="flex-container-col">
             <div id="condition"></div>
           </div>
         </div>
+
         <div id="details" class="flex-col">
           <div id="feelslike-group" class="detail-group temp">
             <i class="fa-solid fa-temperature-half"></i>Feels Like:
@@ -76,6 +73,12 @@
       </div>
 
       <div id="forecast"></div>
+
+      <form action="">
+        <input type="text" id="loc" name="loc" placeholder="Search location..." required />
+        <button id="search" type="button">Go!</button>
+      </form>
+      
     </main>
   </body>
 </html>
