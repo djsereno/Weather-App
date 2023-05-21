@@ -196,7 +196,7 @@ button:hover {
 
 #forecast {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   margin-top: 10px;
   gap: 10px;
 }

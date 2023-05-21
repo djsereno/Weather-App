@@ -32,8 +32,10 @@
 - [x] Implement functionality to change units
 - [x] Add forecast
 - [x] Add weather icons from API
-- [ ] Add some page styling
-- [ ] Add better weather icons
+- [x] Add some page styling
+- [x] Add better weather icons
+- [ ] Update background image based on current weather
+- [ ] Update page for responsiveness
 - [ ] Add a loading screen
 
 ## Built With

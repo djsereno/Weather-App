@@ -1,20 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- (c) ammap.com | SVG weather icons -->
-<svg width="56" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="blur" x="-.20655" y="-.23099" width="1.403" height="1.5634">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-      <feOffset dx="0" dy="4" result="offsetblur" />
-      <feComponentTransfer>
-        <feFuncA slope="0.05" type="linear" />
+
+<svg
+   width="56"
+   height="48"
+   version="1.1"
+   id="svg11108"
+   sodipodi:docname="371.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview11110"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="16.291667"
+     inkscape:cx="27.130435"
+     inkscape:cy="24"
+     inkscape:window-width="2560"
+     inkscape:window-height="1295"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11108" />
+  <defs
+     id="defs11040">
+    <filter
+       id="blur"
+       x="-0.24683544"
+       y="-0.34977579"
+       width="1.4936709"
+       height="1.8789238">
+      <feGaussianBlur
+         in="SourceAlpha"
+         stdDeviation="3"
+         id="feGaussianBlur11023" />
+      <feOffset
+         dx="0"
+         dy="4"
+         result="offsetblur"
+         id="feOffset11025" />
+      <feComponentTransfer
+         id="feComponentTransfer11029">
+        <feFuncA
+           slope="0.05"
+           type="linear"
+           id="feFuncA11027" />
       </feComponentTransfer>
-      <feMerge>
-        <feMergeNode />
-        <feMergeNode in="SourceGraphic" />
+      <feMerge
+         id="feMerge11035">
+        <feMergeNode
+           id="feMergeNode11031" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode11033" />
       </feMerge>
     </filter>
-    <style type="text/css">
-      <![CDATA[
+    <style
+       type="text/css"
+       id="style11038"><![CDATA[
       /*
 ** CLOUDS
 */
@@ -206,67 +257,238 @@
         -ms-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
       }
-      ]]>
-    </style>
+      ]]></style>
   </defs>
-  <g transform="translate(16,-2)" filter="url(#blur)">
-    <g transform="translate(0,16)">
-      <g class="am-weather-sun"
-        style="-moz-animation-duration:9s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-sun;-moz-animation-timing-function:linear;-ms-animation-duration:9s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-sun;-ms-animation-timing-function:linear;-webkit-animation-duration:9s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-sun;-webkit-animation-timing-function:linear">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
-        <g transform="rotate(45)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+  <g
+     transform="translate(20.350001,0.45000104)"
+     filter="url(#blur)"
+     id="g11106">
+    <g
+       transform="translate(0,16)"
+       id="g11076">
+      <g
+         class="am-weather-sun"
+         style="-moz-animation-duration:9s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-sun;-moz-animation-timing-function:linear;-ms-animation-duration:9s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-sun;-ms-animation-timing-function:linear;-webkit-animation-duration:9s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-sun;-webkit-animation-timing-function:linear"
+         id="g11072">
+        <line
+           transform="translate(0,9)"
+           y2="3"
+           fill="none"
+           stroke="#ffa500"
+           stroke-linecap="round"
+           stroke-width="2"
+           id="line11042"
+           x1="0"
+           y1="0"
+           x2="0" />
+        <g
+           transform="rotate(45)"
+           id="g11046">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11044"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(90)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(90)"
+           id="g11050">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11048"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(135)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(135)"
+           id="g11054">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11052"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="scale(-1)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="scale(-1)"
+           id="g11058">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11056"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(225)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-135)"
+           id="g11062">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11060"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(-90)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-90)"
+           id="g11066">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11064"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(-45)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-45)"
+           id="g11070">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line11068"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
       </g>
-      <circle r="5" fill="#ffa500" stroke="#ffa500" stroke-width="2" />
+      <circle
+         r="5"
+         fill="#ffa500"
+         stroke="#ffa500"
+         stroke-width="2"
+         id="circle11074"
+         cx="0"
+         cy="0" />
     </g>
-    <g class="am-weather-cloud-3"
-      style="-moz-animation-duration:3s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-cloud-2;-moz-animation-timing-function:linear;-webkit-animation-duration:3s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-cloud-2;-webkit-animation-timing-function:linear">
-      <path transform="translate(-20,-11)"
-        d="m47.7 35.4c0-4.6-3.7-8.2-8.2-8.2-1 0-1.9 0.2-2.8 0.5-0.3-3.4-3.1-6.2-6.6-6.2-3.7 0-6.7 3-6.7 6.7 0 0.8 0.2 1.6 0.4 2.3-0.3-0.1-0.7-0.1-1-0.1-3.7 0-6.7 3-6.7 6.7 0 3.6 2.9 6.6 6.5 6.7h17.2c4.4-0.5 7.9-4 7.9-8.4z"
-        fill="#57a0ee" stroke="#fff" stroke-linejoin="round" stroke-width="1.2" />
+    <g
+       class="am-weather-cloud-3"
+       style="-moz-animation-duration:3s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-cloud-2;-moz-animation-timing-function:linear;-webkit-animation-duration:3s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-cloud-2;-webkit-animation-timing-function:linear"
+       id="g11080">
+      <path
+         transform="translate(-20,-11)"
+         d="m 47.7,35.4 c 0,-4.6 -3.7,-8.2 -8.2,-8.2 -1,0 -1.9,0.2 -2.8,0.5 -0.3,-3.4 -3.1,-6.2 -6.6,-6.2 -3.7,0 -6.7,3 -6.7,6.7 0,0.8 0.2,1.6 0.4,2.3 -0.3,-0.1 -0.7,-0.1 -1,-0.1 -3.7,0 -6.7,3 -6.7,6.7 0,3.6 2.9,6.6 6.5,6.7 h 17.2 c 4.4,-0.5 7.9,-4 7.9,-8.4 z"
+         fill="#57a0ee"
+         stroke="#ffffff"
+         stroke-linejoin="round"
+         stroke-width="1.2"
+         id="path11078" />
     </g>
-    <g class="am-weather-snow-1"
-      style="-moz-animation-duration:2s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-snow;-moz-animation-timing-function:linear;-ms-animation-duration:2s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-snow;-ms-animation-timing-function:linear;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-snow;-webkit-animation-timing-function:linear">
-      <g transform="translate(7,28)" fill="none" stroke="#57a0ee" stroke-linecap="round">
-        <line transform="translate(0,9)" y1="-2.5" y2="2.5" stroke-width="1.2" />
-        <line transform="rotate(45,-10.864,4.5)" y1="-2.5" y2="2.5" />
-        <line transform="rotate(90,-4.5,4.5)" y1="-2.5" y2="2.5" />
-        <line transform="rotate(135,-1.864,4.5)" y1="-2.5" y2="2.5" />
+    <g
+       class="am-weather-snow-1"
+       style="-moz-animation-duration:2s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-snow;-moz-animation-timing-function:linear;-ms-animation-duration:2s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-snow;-ms-animation-timing-function:linear;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-snow;-webkit-animation-timing-function:linear"
+       id="g11092">
+      <g
+         transform="translate(7,28)"
+         fill="none"
+         stroke="#57a0ee"
+         stroke-linecap="round"
+         id="g11090">
+        <line
+           transform="translate(0,9)"
+           y1="-2.5"
+           y2="2.5"
+           stroke-width="1.2"
+           id="line11082"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(45,-10.864,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11084"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(90,-4.5,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11086"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(135,-1.864,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11088"
+           x1="0"
+           x2="0" />
       </g>
     </g>
-    <g class="am-weather-snow-2"
-      style="-moz-animation-delay:1.2s;-moz-animation-duration:2s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-snow;-moz-animation-timing-function:linear;-ms-animation-delay:1.2s;-ms-animation-duration:2s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-snow;-ms-animation-timing-function:linear;-webkit-animation-delay:1.2s;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-snow;-webkit-animation-timing-function:linear">
-      <g transform="translate(16,28)" fill="none" stroke="#57a0ee" stroke-linecap="round">
-        <line transform="translate(0,9)" y1="-2.5" y2="2.5" stroke-width="1.2" />
-        <line transform="rotate(45,-10.864,4.5)" y1="-2.5" y2="2.5" />
-        <line transform="rotate(90,-4.5,4.5)" y1="-2.5" y2="2.5" />
-        <line transform="rotate(135,-1.864,4.5)" y1="-2.5" y2="2.5" />
+    <g
+       class="am-weather-snow-2"
+       style="-moz-animation-delay:1.2s;-moz-animation-duration:2s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-snow;-moz-animation-timing-function:linear;-ms-animation-delay:1.2s;-ms-animation-duration:2s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-snow;-ms-animation-timing-function:linear;-webkit-animation-delay:1.2s;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-snow;-webkit-animation-timing-function:linear"
+       id="g11104">
+      <g
+         transform="translate(16,28)"
+         fill="none"
+         stroke="#57a0ee"
+         stroke-linecap="round"
+         id="g11102">
+        <line
+           transform="translate(0,9)"
+           y1="-2.5"
+           y2="2.5"
+           stroke-width="1.2"
+           id="line11094"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(45,-10.864,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11096"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(90,-4.5,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11098"
+           x1="0"
+           x2="0" />
+        <line
+           transform="rotate(135,-1.864,4.5)"
+           y1="-2.5"
+           y2="2.5"
+           id="line11100"
+           x1="0"
+           x2="0" />
       </g>
     </g>
   </g>

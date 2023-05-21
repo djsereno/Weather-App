@@ -1,20 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- (c) ammap.com | SVG weather icons -->
-<svg width="56" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="blur" x="-.34167" y="-.34167" width="1.6833" height="1.85">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-      <feOffset dx="0" dy="4" result="offsetblur" />
-      <feComponentTransfer>
-        <feFuncA slope="0.05" type="linear" />
+
+<svg
+   width="56"
+   height="48"
+   version="1.1"
+   id="svg974"
+   sodipodi:docname="113.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview976"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="11.3125"
+     inkscape:cx="9.5469613"
+     inkscape:cy="28.198895"
+     inkscape:window-width="2560"
+     inkscape:window-height="1295"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg974" />
+  <defs
+     id="defs934">
+    <filter
+       id="blur"
+       x="-0.34166667"
+       y="-0.34166667"
+       width="1.6833333"
+       height="1.85">
+      <feGaussianBlur
+         in="SourceAlpha"
+         stdDeviation="3"
+         id="feGaussianBlur917" />
+      <feOffset
+         dx="0"
+         dy="4"
+         result="offsetblur"
+         id="feOffset919" />
+      <feComponentTransfer
+         id="feComponentTransfer923">
+        <feFuncA
+           slope="0.05"
+           type="linear"
+           id="feFuncA921" />
       </feComponentTransfer>
-      <feMerge>
-        <feMergeNode />
-        <feMergeNode in="SourceGraphic" />
+      <feMerge
+         id="feMerge929">
+        <feMergeNode
+           id="feMergeNode925" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode927" />
       </feMerge>
     </filter>
-    <style type="text/css">
-      <![CDATA[
+    <style
+       type="text/css"
+       id="style932"><![CDATA[
       /*
 ** SUN
 */
@@ -88,43 +139,143 @@
         -ms-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
       }
-      ]]>
-    </style>
+      ]]></style>
   </defs>
-  <g transform="translate(16,-2)" filter="url(#blur)">
-    <g transform="translate(0,16)">
-      <g class="am-weather-sun"
-        style="-moz-animation-duration:9s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-sun;-moz-animation-timing-function:linear;-ms-animation-duration:9s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-sun;-ms-animation-timing-function:linear;-webkit-animation-duration:9s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-sun;-webkit-animation-timing-function:linear">
-        <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round" stroke-width="2" />
-        <g transform="rotate(45)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+  <g
+     transform="translate(28.000001,5.9999998)"
+     filter="url(#blur)"
+     id="g972">
+    <g
+       transform="translate(0,16)"
+       id="g970">
+      <g
+         class="am-weather-sun"
+         style="-moz-animation-duration:9s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-sun;-moz-animation-timing-function:linear;-ms-animation-duration:9s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-sun;-ms-animation-timing-function:linear;-webkit-animation-duration:9s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-sun;-webkit-animation-timing-function:linear"
+         id="g968">
+        <line
+           transform="translate(0,9)"
+           y2="3"
+           fill="none"
+           stroke="#ffa500"
+           stroke-linecap="round"
+           stroke-width="2"
+           id="line936"
+           x1="0"
+           y1="0"
+           x2="0" />
+        <g
+           transform="rotate(45)"
+           id="g940">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line938"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(90)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(90)"
+           id="g944">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line942"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(135)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(135)"
+           id="g948">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line946"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="scale(-1)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="scale(-1)"
+           id="g952">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line950"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(225)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-135)"
+           id="g956">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line954"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(-90)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-90)"
+           id="g960">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line958"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <g transform="rotate(-45)">
-          <line transform="translate(0,9)" y2="3" fill="none" stroke="#ffa500" stroke-linecap="round"
-            stroke-width="2" />
+        <g
+           transform="rotate(-45)"
+           id="g964">
+          <line
+             transform="translate(0,9)"
+             y2="3"
+             fill="none"
+             stroke="#ffa500"
+             stroke-linecap="round"
+             stroke-width="2"
+             id="line962"
+             x1="0"
+             y1="0"
+             x2="0" />
         </g>
-        <circle r="5" fill="#ffa500" stroke="#ffa500" stroke-width="2" />
+        <circle
+           r="5"
+           fill="#ffa500"
+           stroke="#ffa500"
+           stroke-width="2"
+           id="circle966"
+           cx="0"
+           cy="0" />
       </g>
     </g>
   </g>
