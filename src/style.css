@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-  --fs-xl: 6rem;
+  --fs-xl: 7rem;
   --fs-600: 2rem;
   --fs-500: 1.5rem;
   --fs-400: 1.125rem;
   --fs-300: 0.8rem;
 
   --clr-primary: white;
-
   --blur-intensity: 0px;
 }
 
@@ -86,6 +85,12 @@ main {
   font-size: var(--fs-500);
   gap: 3rem;
   padding: 3rem;
+}
+
+#main {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: center;
 }
 
 #location {
@@ -174,8 +179,7 @@ button:hover {
 }
 
 #condition-icon {
-  width: min(200px, 100%);
-  height: auto;
+  width: 100%;
 }
 
 #details {
