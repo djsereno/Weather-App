@@ -65,7 +65,15 @@ import getSampleData from './sampledata';
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
     conditionElem.innerText = titleCase(results.weather.condition.text);
-    conditionIcon.setAttribute('src', `./images/icons/day/${results.weather.condition.icon}.svg`);
+    results.weather.is_day
+      ? conditionIcon.setAttribute(
+          'src',
+          `./images/icons/day/${results.weather.condition.icon}.svg`,
+        )
+      : conditionIcon.setAttribute(
+          'src',
+          `./images/icons/night/${results.weather.condition.icon}.svg`,
+        );
 
     feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
@@ -157,13 +165,12 @@ import getSampleData from './sampledata';
     if (!location) return;
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = false;
+    const useAPI = true;
     if (useAPI) {
       results = await getWeather(location);
       // console.log(JSON.stringify(results));
     } else {
       results = await getSampleData();
-      console.log(results);
     }
 
     updateRealtimeDOM();

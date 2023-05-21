@@ -29,6 +29,8 @@ const getWeather = async (loc = 'san francisco') => {
   const weatherData = { ...data.current };
   const forecastData = { ...data.forecast.forecastday };
 
+  console.log(data);
+
   const location = {
     city: locationData.name,
     region: locationData.region,
@@ -37,6 +39,7 @@ const getWeather = async (loc = 'san francisco') => {
   };
 
   const weather = {
+    is_day: weatherData.is_day,
     temp: { imp: Math.round(weatherData.temp_f), met: Math.round(weatherData.temp_c) },
     feelslike: {
       imp: Math.round(weatherData.feelslike_f),
