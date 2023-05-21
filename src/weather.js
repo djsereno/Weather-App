@@ -1,5 +1,11 @@
 const key = 'b512bf463cd641b491323834232404';
 
+const getIconNum = (urlString) => {
+  const urlParts = urlString.split('/');
+  const fileName = urlParts.pop().split('.');
+  return fileName[0];
+};
+
 const fetchWeather = async (location) => {
   try {
     const response = await fetch(
@@ -19,7 +25,6 @@ const fetchWeather = async (location) => {
 
 const getWeather = async (loc = 'san francisco') => {
   const data = await fetchWeather(loc);
-  console.log(data);
   const locationData = { ...data.location };
   const weatherData = { ...data.current };
   const forecastData = { ...data.forecast.forecastday };
@@ -37,7 +42,10 @@ const getWeather = async (loc = 'san francisco') => {
       imp: Math.round(weatherData.feelslike_f),
       met: Math.round(weatherData.feelslike_c),
     },
-    condition: { ...weatherData.condition },
+    condition: {
+      text: weatherData.condition.text,
+      icon: getIconNum(weatherData.condition.icon),
+    },
     wind_speed: { imp: Math.round(weatherData.wind_mph), met: Math.round(weatherData.wind_kph) },
     wind_degree: weatherData.wind_degree,
     wind_dir: weatherData.wind_dir,
@@ -51,7 +59,10 @@ const getWeather = async (loc = 'san francisco') => {
     const forecastWeather = {
       maxtemp: { imp: Math.round(day.maxtemp_f), met: Math.round(day.maxtemp_c) },
       mintemp: { imp: Math.round(day.mintemp_f), met: Math.round(day.mintemp_c) },
-      condition: { ...day.condition },
+      condition: {
+        text: day.condition.text,
+        icon: getIconNum(day.condition.icon),
+      },
       daily_chance_of_rain: Math.round(day.daily_chance_of_rain),
       daily_chance_of_snow: Math.round(day.daily_chance_of_snow),
     };

@@ -9,11 +9,8 @@ import getSampleData from './sampledata';
   const locInput = document.querySelector('#loc');
   const searchBtn = document.querySelector('#search');
 
-  // const cityElem = document.querySelector('#city');
-  // const regionElem = document.querySelector('#region');
   const dateElem = document.querySelector('#date');
   const timeElem = document.querySelector('#time');
-
   const tempImpElem = document.querySelector('#temp-imp');
   const tempMetElem = document.querySelector('#temp-met');
   const conditionElem = document.querySelector('#condition');
@@ -68,7 +65,7 @@ import getSampleData from './sampledata';
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
     conditionElem.innerText = titleCase(results.weather.condition.text);
-    conditionIcon.setAttribute('src', results.weather.condition.icon);
+    conditionIcon.setAttribute('src', `./images/icons/day/${results.weather.condition.icon}.svg`);
 
     feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
@@ -110,7 +107,10 @@ import getSampleData from './sampledata';
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
 
-      conditionForeIcon.setAttribute('src', forecastWeather.condition.icon);
+      conditionForeIcon.setAttribute(
+        'src',
+        `./images/icons/day/${forecastWeather.condition.icon}.svg`,
+      );
 
       highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°`;
       highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°`;
@@ -157,7 +157,7 @@ import getSampleData from './sampledata';
     if (!location) return;
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = true;
+    const useAPI = false;
     if (useAPI) {
       results = await getWeather(location);
       // console.log(JSON.stringify(results));

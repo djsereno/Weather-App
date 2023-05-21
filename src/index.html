@@ -9,11 +9,11 @@
   </head>
   <body>
     <div class="bg">
-      <img src="./images/clear-day.jpg" alt="" />
+      <img src="./images/backgrounds/clear-day.jpg" alt="" />
     </div>
     <main>
       <div id="current-weather" class="card">
-        <div id="main" class="flex-col">
+        <div id="main">
           <form action="" id="location">
             <i class="fa-solid fa-location-dot"></i>
             <input type="text" id="loc" name="loc" placeholder="Search location..." required />
@@ -28,14 +28,14 @@
               <button type="button" id="time-12" class="unit-toggle">12h</button> |
               <button type="button" id="time-24" class="unit-toggle">24h</button>
             </span>
-            <div id="temp-group" class="temp">
-              <span id="temp-imp" class="temp imp"></span>
-              <span id="temp-met" class="temp met"></span>
-              <span class="unit-toggle-group">
-                <button type="button" id="units-imp" class="unit-toggle">F</button> |
-                <button type="button" id="units-met" class="unit-toggle">C</button>
-              </span>
-            </div>
+          </div>
+          <div id="temp-group" class="temp">
+            <span id="temp-imp" class="temp imp"></span>
+            <span id="temp-met" class="temp met"></span>
+            <span class="unit-toggle-group">
+              <button type="button" id="units-imp" class="unit-toggle">F</button> |
+              <button type="button" id="units-met" class="unit-toggle">C</button>
+            </span>
           </div>
         </div>
 
