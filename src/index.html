@@ -15,7 +15,10 @@
       <div id="current-weather" class="card">
         <div id="main">
           <form action="" id="location">
-            <i class="fa-solid fa-location-dot"></i>
+            <div class="spinner-group">
+              <i class="loc-pin fa-solid fa-location-dot visible"></i>
+              <i class="spinner fa-solid fa-spinner hidden"></i>
+            </div>
             <input type="text" id="loc" name="loc" placeholder="Search location..." required />
             <button id="search" type="button">
               <i class="fa-solid fa-magnifying-glass"></i>

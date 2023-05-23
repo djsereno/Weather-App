@@ -96,7 +96,39 @@ main {
 #location {
   display: grid;
   grid-template-columns: auto auto 1em;
-  gap: 1ch;
+  gap: 10px;
+}
+
+.spinner-group {
+  position: relative;
+}
+
+.loc-pin {
+  visibility: hidden;
+}
+.loc-pin.visible {
+  visibility: visible;
+}
+
+.spinner {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  animation-duration: 0.7s;
+  animation-name: spinner;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(8, end);
+}
+
+@keyframes spinner {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 #loc,

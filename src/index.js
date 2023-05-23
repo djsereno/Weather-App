@@ -7,6 +7,8 @@ import getSampleData from './sampledata';
 
 (() => {
   const locInput = document.querySelector('#loc');
+  const locPinIcon = document.querySelector('.loc-pin');
+  const spinnerIcon = document.querySelector('.spinner');
   const searchBtn = document.querySelector('#search');
 
   const dateElem = document.querySelector('#date');
@@ -39,6 +41,11 @@ import getSampleData from './sampledata';
       return;
     }
     timeElem.innerText = format(date, 'p');
+  };
+
+  const toggleSpinnerVisibility = () => {
+    locPinIcon.classList.toggle('visible');
+    spinnerIcon.classList.toggle('hidden');
   };
 
   const setMeasureVisibility = (unitsFormat = 'imp') => {
@@ -164,8 +171,10 @@ import getSampleData from './sampledata';
   const handleSearch = async (location) => {
     if (!location) return;
 
+    toggleSpinnerVisibility();
+
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = false;
+    const useAPI = true;
     if (useAPI) {
       results = await getWeather(location);
       // console.log(JSON.stringify(results));
@@ -173,6 +182,7 @@ import getSampleData from './sampledata';
       results = await getSampleData();
     }
 
+    toggleSpinnerVisibility();
     updateRealtimeDOM();
     updateForecastDOM();
     setMeasureVisibility();
