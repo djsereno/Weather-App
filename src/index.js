@@ -26,6 +26,7 @@ import getSampleData from './sampledata';
   const precipMetElem = document.querySelector('#precip-met');
   const humidityElem = document.querySelector('#humidity');
   const forecastElem = document.querySelector('#forecast');
+  const bgImage = document.querySelector('#bg-image');
 
   const time12Btn = document.querySelector('#time-12');
   const time24Btn = document.querySelector('#time-24');
@@ -81,6 +82,8 @@ import getSampleData from './sampledata';
           'src',
           `./images/icons/night/${results.weather.condition.icon}.svg`,
         );
+    const bgImageFile = getBgImage(results.weather.condition.icon, results.weather.is_day);
+    bgImage.setAttribute('src', `./images/backgrounds/day/${bgImageFile}.jpg`);
 
     feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
@@ -220,3 +223,111 @@ import getSampleData from './sampledata';
 
   handleSearch('seattle');
 })();
+
+function getBgImage(code, isDay) {
+  const dayCodes = {
+    113: 'clear',
+    122: 'clear',
+    179: 'clear',
+    200: 'clear',
+    248: 'clear',
+    266: 'clear',
+    293: 'clear',
+    302: 'clear',
+    311: 'clear',
+    320: 'clear',
+    329: 'clear',
+    338: 'clear',
+    356: 'clear',
+    365: 'clear',
+    374: 'clear',
+    389: 'clear',
+    116: 'clear',
+    143: 'clear',
+    182: 'clear',
+    227: 'clear',
+    260: 'clear',
+    281: 'clear',
+    296: 'clear',
+    305: 'clear',
+    314: 'clear',
+    323: 'clear',
+    332: 'clear',
+    350: 'clear',
+    359: 'clear',
+    368: 'clear',
+    377: 'clear',
+    392: 'clear',
+    119: 'clear',
+    176: 'clear',
+    185: 'clear',
+    230: 'clear',
+    263: 'clear',
+    284: 'clear',
+    299: 'clear',
+    308: 'clear',
+    317: 'clear',
+    326: 'clear',
+    335: 'clear',
+    353: 'clear',
+    362: 'clear',
+    371: 'clear',
+    386: 'clear',
+    395: 'clear',
+  };
+
+  const nightCodes = {
+    113: 'clear',
+    122: 'clear',
+    179: 'clear',
+    200: 'clear',
+    248: 'clear',
+    266: 'clear',
+    293: 'clear',
+    302: 'clear',
+    311: 'clear',
+    320: 'clear',
+    329: 'clear',
+    338: 'clear',
+    356: 'clear',
+    365: 'clear',
+    374: 'clear',
+    389: 'clear',
+    116: 'clear',
+    143: 'clear',
+    182: 'clear',
+    227: 'clear',
+    260: 'clear',
+    281: 'clear',
+    296: 'clear',
+    305: 'clear',
+    314: 'clear',
+    323: 'clear',
+    332: 'clear',
+    350: 'clear',
+    359: 'clear',
+    368: 'clear',
+    377: 'clear',
+    392: 'clear',
+    119: 'clear',
+    176: 'clear',
+    185: 'clear',
+    230: 'clear',
+    263: 'clear',
+    284: 'clear',
+    299: 'clear',
+    308: 'clear',
+    317: 'clear',
+    326: 'clear',
+    335: 'clear',
+    353: 'clear',
+    362: 'clear',
+    371: 'clear',
+    386: 'clear',
+    395: 'clear',
+  };
+
+  console.log(code, isDay);
+
+  return isDay ? dayCodes[code] : nightCodes[code];
+}
