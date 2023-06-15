@@ -67,7 +67,7 @@ import getSampleData from './sampledata';
 
     locInput.value = `${results.location.city}, ${results.location.region}`;
 
-    dateElem.innerText = format(date, 'PPPP');
+    dateElem.innerText = format(date, 'EEEE, MMMM do');
     updateTimeElem(12);
 
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
