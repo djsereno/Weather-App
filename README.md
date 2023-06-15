@@ -36,7 +36,8 @@
 - [x] Add better weather icons
 - [x] Add a loading symbol
 - [x] Update background image based on current weather
-- [ ] Update page for responsiveness
+- [x] Update page for responsiveness
+- [ ] Refactor and reorganize
 
 ## Built With
 
