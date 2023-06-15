@@ -35,7 +35,7 @@
 - [x] Add some page styling
 - [x] Add better weather icons
 - [x] Add a loading symbol
-- [ ] Update background image based on current weather
+- [x] Update background image based on current weather
 - [ ] Update page for responsiveness
 
 ## Built With
@@ -79,3 +79,7 @@ Photo by <a href="https://unsplash.com/@billy_huy?utm_source=unsplash&utm_medium
 Photo by <a href="https://unsplash.com/fr/@matthewtwhuang?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matthew Huang</a> on <a href="https://unsplash.com/photos/2j2k6q8JcOw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 https://github.com/Makin-Things/weather-icons/tree/main
+
+Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>
+
+Photo by <a href="https://unsplash.com/@anandu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Anandu Vinod</a> on <a href="https://unsplash.com/photos/pbxwxwfI0B4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

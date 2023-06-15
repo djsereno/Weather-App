@@ -2,7 +2,7 @@ import './normalize.css';
 import './style.css';
 import { format, isToday, isTomorrow, parse } from 'date-fns';
 import getWeather from './weather';
-import titleCase from './helper-fns';
+import { titleCase, getBgImage } from './helper-fns';
 import getSampleData from './sampledata';
 
 (() => {
@@ -73,17 +73,17 @@ import getSampleData from './sampledata';
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
     conditionElem.innerText = titleCase(results.weather.condition.text);
-    results.weather.is_day
-      ? conditionIcon.setAttribute(
-          'src',
-          `./images/icons/day/${results.weather.condition.icon}.svg`,
-        )
-      : conditionIcon.setAttribute(
-          'src',
-          `./images/icons/night/${results.weather.condition.icon}.svg`,
-        );
-    const bgImageFile = getBgImage(results.weather.condition.icon, results.weather.is_day);
-    bgImage.setAttribute('src', `./images/backgrounds/day/${bgImageFile}.jpg`);
+
+    const iconCode = results.weather.condition.icon;
+    const bgImageFile = getBgImage(results.weather.condition.icon);
+
+    if (results.weather.is_day) {
+      conditionIcon.setAttribute('src', `./images/icons/day/${iconCode}.svg`);
+      bgImage.setAttribute('src', `./images/backgrounds/day/${bgImageFile}.jpg`);
+    } else {
+      conditionIcon.setAttribute('src', `./images/icons/night/${iconCode}.svg`);
+      bgImage.setAttribute('src', `./images/backgrounds/night/${bgImageFile}.jpg`);
+    }
 
     feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
@@ -223,111 +223,3 @@ import getSampleData from './sampledata';
 
   handleSearch('seattle');
 })();
-
-function getBgImage(code, isDay) {
-  const dayCodes = {
-    113: 'clear',
-    122: 'clear',
-    179: 'clear',
-    200: 'clear',
-    248: 'clear',
-    266: 'clear',
-    293: 'clear',
-    302: 'clear',
-    311: 'clear',
-    320: 'clear',
-    329: 'clear',
-    338: 'clear',
-    356: 'clear',
-    365: 'clear',
-    374: 'clear',
-    389: 'clear',
-    116: 'clear',
-    143: 'clear',
-    182: 'clear',
-    227: 'clear',
-    260: 'clear',
-    281: 'clear',
-    296: 'clear',
-    305: 'clear',
-    314: 'clear',
-    323: 'clear',
-    332: 'clear',
-    350: 'clear',
-    359: 'clear',
-    368: 'clear',
-    377: 'clear',
-    392: 'clear',
-    119: 'clear',
-    176: 'clear',
-    185: 'clear',
-    230: 'clear',
-    263: 'clear',
-    284: 'clear',
-    299: 'clear',
-    308: 'clear',
-    317: 'clear',
-    326: 'clear',
-    335: 'clear',
-    353: 'clear',
-    362: 'clear',
-    371: 'clear',
-    386: 'clear',
-    395: 'clear',
-  };
-
-  const nightCodes = {
-    113: 'clear',
-    122: 'clear',
-    179: 'clear',
-    200: 'clear',
-    248: 'clear',
-    266: 'clear',
-    293: 'clear',
-    302: 'clear',
-    311: 'clear',
-    320: 'clear',
-    329: 'clear',
-    338: 'clear',
-    356: 'clear',
-    365: 'clear',
-    374: 'clear',
-    389: 'clear',
-    116: 'clear',
-    143: 'clear',
-    182: 'clear',
-    227: 'clear',
-    260: 'clear',
-    281: 'clear',
-    296: 'clear',
-    305: 'clear',
-    314: 'clear',
-    323: 'clear',
-    332: 'clear',
-    350: 'clear',
-    359: 'clear',
-    368: 'clear',
-    377: 'clear',
-    392: 'clear',
-    119: 'clear',
-    176: 'clear',
-    185: 'clear',
-    230: 'clear',
-    263: 'clear',
-    284: 'clear',
-    299: 'clear',
-    308: 'clear',
-    317: 'clear',
-    326: 'clear',
-    335: 'clear',
-    353: 'clear',
-    362: 'clear',
-    371: 'clear',
-    386: 'clear',
-    395: 'clear',
-  };
-
-  console.log(code, isDay);
-
-  return isDay ? dayCodes[code] : nightCodes[code];
-}
