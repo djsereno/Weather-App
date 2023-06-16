@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/e89148c565.js" crossorigin="anonymous"></script>
+    <title>Weather App</title>
+  <link rel="icon" href="favicon.png"><script defer src="index.bundle.js"></script></head>
+  <body>
+    <div class="bg">
+      <img src="" id="bg-image" alt="" />
+    </div>
+    <main>
+      <div id="current-weather" class="card">
+        <div id="main">
+          <form action="" id="location">
+            <div class="spinner-group">
+              <i class="loc-pin fa-solid fa-location-dot visible"></i>
+              <i class="spinner fa-solid fa-spinner hidden"></i>
+            </div>
+            <input type="text" id="loc" name="loc" placeholder="Search location..." required />
+            <button id="search" type="button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+          <div id="date"></div>
+          <div id="time-group">
+            <span id="time" class="time"></span>
+            <span class="unit-toggle-group">
+              <button type="button" id="time-12" class="unit-toggle">12h</button> |
+              <button type="button" id="time-24" class="unit-toggle">24h</button>
+            </span>
+          </div>
+          <div id="temp-group" class="temp">
+            <span id="temp-imp" class="temp imp"></span>
+            <span id="temp-met" class="temp met"></span>
+            <span class="unit-toggle-group">
+              <button type="button" id="units-imp" class="unit-toggle">F</button> |
+              <button type="button" id="units-met" class="unit-toggle">C</button>
+            </span>
+          </div>
+        </div>
+
+        <div id="current-condition">
+          <div class="img-container"><img id="condition-icon" src="" alt="" /></div>
+          <div class="flex-container-col">
+            <div id="condition"></div>
+          </div>
+        </div>
+
+        <div id="details" class="flex-col">
+          <div id="feelslike-group" class="detail-group temp">
+            <i class="fa-solid fa-temperature-half"></i>Feels Like:
+            <span>
+              <span id="feelslike-imp" class="temp imp"></span>
+              <span id="feelslike-met" class="temp met"></span>
+            </span>
+          </div>
+          <div id="wind" class="detail-group">
+            <i class="fa-solid fa-wind"></i>Wind:
+            <span>
+              <span id="wind_speed-imp" class="speed imp"></span>
+              <span id="wind_speed-met" class="speed met"></span>
+            </span>
+            <span id="wind_dir"></span>
+            <i id="wind-dir-icon" data-rot="60" class="fa-solid fa-location-arrow"></i>
+          </div>
+          <div id="precip" class="detail-group length">
+            <i class="fa-solid fa-umbrella"></i>Precipitation:
+            <span>
+              <span id="precip-imp" class="precip imp"></span>
+              <span id="precip-met" class="precip met"></span>
+            </span>
+          </div>
+          <div class="detail-group">
+            <i class="fa-solid fa-droplet"></i>Humidity:
+            <span id="humidity"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="forecast"></div>
+    </main>
+  </body>
+</html>

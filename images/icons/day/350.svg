@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- (c) ammap.com | SVG weather icons -->
+
+<svg
+   width="56"
+   height="48"
+   version="1.1"
+   id="svg9240"
+   sodipodi:docname="350.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview9242"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="16.291667"
+     inkscape:cx="27.130435"
+     inkscape:cy="24"
+     inkscape:window-width="2560"
+     inkscape:window-height="1295"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg9240" />
+  <defs
+     id="defs9224">
+    <filter
+       id="blur"
+       x="-0.24683544"
+       y="-0.34977579"
+       width="1.4936709"
+       height="1.8789238">
+      <feGaussianBlur
+         in="SourceAlpha"
+         stdDeviation="3"
+         id="feGaussianBlur9207" />
+      <feOffset
+         dx="0"
+         dy="4"
+         result="offsetblur"
+         id="feOffset9209" />
+      <feComponentTransfer
+         id="feComponentTransfer9213">
+        <feFuncA
+           slope="0.05"
+           type="linear"
+           id="feFuncA9211" />
+      </feComponentTransfer>
+      <feMerge
+         id="feMerge9219">
+        <feMergeNode
+           id="feMergeNode9215" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode9217" />
+      </feMerge>
+    </filter>
+    <style
+       type="text/css"
+       id="style9222"><![CDATA[
+         /*
+      /*
+** CLOUDS
+*/
+      @keyframes am-weather-cloud {
+        0% {
+          -webkit-transform: translate(0px, 0px);
+          -moz-transform: translate(0px, 0px);
+          -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+        }
+
+        50% {
+          -webkit-transform: translate(2px, 0px);
+          -moz-transform: translate(2px, 0px);
+          -ms-transform: translate(2px, 0px);
+          transform: translate(2px, 0px);
+        }
+
+        100% {
+          -webkit-transform: translate(0px, 0px);
+          -moz-transform: translate(0px, 0px);
+          -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+        }
+      }
+
+      .am-weather-cloud {
+        -webkit-animation-name: am-weather-cloud;
+        -moz-animation-name: am-weather-cloud;
+        animation-name: am-weather-cloud;
+        -webkit-animation-duration: 3s;
+        -moz-animation-duration: 3s;
+        animation-duration: 3s;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+
+         /*
+** RAIN
+*/
+         @keyframes am-weather-rain {
+            0% {
+               stroke-dashoffset: 0;
+            }
+
+            100% {
+               stroke-dashoffset: -100;
+            }
+         }
+
+         .am-weather-rain-1 {
+            -webkit-animation-name: am-weather-rain;
+            -moz-animation-name: am-weather-rain;
+            -ms-animation-name: am-weather-rain;
+            animation-name: am-weather-rain;
+            -webkit-animation-duration: 8s;
+            -moz-animation-duration: 8s;
+            -ms-animation-duration: 8s;
+            animation-duration: 8s;
+            -webkit-animation-timing-function: linear;
+            -moz-animation-timing-function: linear;
+            -ms-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -moz-animation-iteration-count: infinite;
+            -ms-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+         }
+
+         .am-weather-rain-2 {
+            -webkit-animation-name: am-weather-rain;
+            -moz-animation-name: am-weather-rain;
+            -ms-animation-name: am-weather-rain;
+            animation-name: am-weather-rain;
+            -webkit-animation-delay: 0.25s;
+            -moz-animation-delay: 0.25s;
+            -ms-animation-delay: 0.25s;
+            animation-delay: 0.25s;
+            -webkit-animation-duration: 8s;
+            -moz-animation-duration: 8s;
+            -ms-animation-duration: 8s;
+            animation-duration: 8s;
+            -webkit-animation-timing-function: linear;
+            -moz-animation-timing-function: linear;
+            -ms-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -moz-animation-iteration-count: infinite;
+            -ms-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+         }
+         ]]></style>
+  </defs>
+  <g
+     transform="translate(16.099999,-5.7422495)"
+     filter="url(#blur)"
+     id="g9238">
+    <g
+       class="am-weather-cloud"
+       style="-moz-animation-duration:3s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-cloud;-moz-animation-timing-function:linear;-webkit-animation-duration:3s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-cloud;-webkit-animation-timing-function:linear"
+       id="g9228">
+      <path
+         transform="translate(-20,-11)"
+         d="m 47.7,35.4 c 0,-4.6 -3.7,-8.2 -8.2,-8.2 -1,0 -1.9,0.2 -2.8,0.5 -0.3,-3.4 -3.1,-6.2 -6.6,-6.2 -3.7,0 -6.7,3 -6.7,6.7 0,0.8 0.2,1.6 0.4,2.3 -0.3,-0.1 -0.7,-0.1 -1,-0.1 -3.7,0 -6.7,3 -6.7,6.7 0,3.6 2.9,6.6 6.5,6.7 h 17.2 c 4.4,-0.5 7.9,-4 7.9,-8.4 z"
+         fill="#57a0ee"
+         stroke="#ffffff"
+         stroke-linejoin="round"
+         stroke-width="1.2"
+         id="path9226" />
+    </g>
+    <g
+       transform="rotate(10,-200.24233,89.119477)"
+       fill="none"
+       stroke="#91c0f8"
+       stroke-dasharray="0.1, 7"
+       stroke-linecap="round"
+       stroke-width="3"
+       id="g9236">
+      <line
+         class="am-weather-rain-1"
+         transform="translate(-5,1)"
+         y2="8"
+         style="-moz-animation-duration:8s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-rain;-moz-animation-timing-function:linear;-ms-animation-duration:8s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-rain;-ms-animation-timing-function:linear;-webkit-animation-duration:8s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-rain;-webkit-animation-timing-function:linear"
+         id="line9230"
+         x1="0"
+         y1="0"
+         x2="0" />
+      <line
+         class="am-weather-rain-2"
+         transform="translate(0,-1)"
+         y2="8"
+         style="-moz-animation-delay:0.25s;-moz-animation-duration:8s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-rain;-moz-animation-timing-function:linear;-ms-animation-delay:0.25s;-ms-animation-duration:8s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-rain;-ms-animation-timing-function:linear;-webkit-animation-delay:0.25s;-webkit-animation-duration:8s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-rain;-webkit-animation-timing-function:linear"
+         id="line9232"
+         x1="0"
+         y1="0"
+         x2="0" />
+      <line
+         class="am-weather-rain-1"
+         transform="translate(5)"
+         y2="8"
+         style="-moz-animation-duration:8s;-moz-animation-iteration-count:infinite;-moz-animation-name:am-weather-rain;-moz-animation-timing-function:linear;-ms-animation-duration:8s;-ms-animation-iteration-count:infinite;-ms-animation-name:am-weather-rain;-ms-animation-timing-function:linear;-webkit-animation-duration:8s;-webkit-animation-iteration-count:infinite;-webkit-animation-name:am-weather-rain;-webkit-animation-timing-function:linear"
+         id="line9234"
+         x1="0"
+         y1="0"
+         x2="0" />
+    </g>
+  </g>
+</svg>
