@@ -45,6 +45,7 @@ body {
 main {
   width: min(1200px, 100% - 4rem);
   margin-top: 5rem;
+  margin-bottom: 5rem;
   margin-inline: auto;
 }
 
@@ -284,6 +285,10 @@ button:hover {
 }
 
 @media (max-width: 800px) {
+  main {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
   #current-weather {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -300,12 +305,17 @@ button:hover {
 
 @media (max-width: 600px) {
   #main {
-    justify-self: start;
+    justify-self: center;
+    text-align: center;
+  }
+  #loc {
+    text-align: center;
   }
   #current-weather {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
     gap: 0rem;
+    padding: 1.5rem;
   }
   #current-condition {
     grid-column: auto;
@@ -319,6 +329,6 @@ button:hover {
   }
   #details {
     padding-top: 2rem;
-    justify-self: start;
+    justify-self: center;
   }
 }

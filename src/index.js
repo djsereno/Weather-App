@@ -177,7 +177,7 @@ import getSampleData from './sampledata';
     toggleSpinnerVisibility();
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = false;
+    const useAPI = true;
     if (useAPI) {
       results = await getWeather(location);
       // console.log(JSON.stringify(results));
