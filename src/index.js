@@ -41,13 +41,13 @@ import getSampleData from './sampledata';
     spinnerIcon.classList.toggle('hidden');
   };
 
-  const changeTimeFormat = (timeFormat = 12) => {
+  const setTimeFormat = (timeFormat = 12) => {
     timeFormat === 24
       ? (timeElem.innerText = format(date, 'kk:mm'))
       : (timeElem.innerText = format(date, 'p'));
   };
 
-  const changeUnitFormat = (unitsFormat = 'imp') => {
+  const setUnitFormat = (unitsFormat = 'imp') => {
     const measurementElems = document.querySelectorAll('.imp, .met');
     measurementElems.forEach((elem) => {
       elem.classList.contains(unitsFormat)
@@ -62,7 +62,7 @@ import getSampleData from './sampledata';
     locInput.value = `${results.location.city}, ${results.location.region}`;
 
     dateElem.innerText = format(date, 'EEEE, MMMM do');
-    changeTimeFormat(12);
+    setTimeFormat(12);
 
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
@@ -167,22 +167,13 @@ import getSampleData from './sampledata';
 
   const handleSearch = async (location) => {
     if (!location) return;
-
+    const useAPI = true; // For dev use to avoid wasteful API calls
     toggleLoadingSpinner();
-
-    // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = false;
-    if (useAPI) {
-      results = await getWeatherData(location);
-      // console.log(JSON.stringify(results));
-    } else {
-      results = await getSampleData();
-    }
-
+    useAPI ? (results = await getWeatherData(location)) : (results = await getSampleData());
     toggleLoadingSpinner();
     updateRealtimeDOM();
     updateForecastDOM();
-    changeUnitFormat();
+    setUnitFormat();
     searchBtn.classList.remove('visible');
   };
 
@@ -209,11 +200,10 @@ import getSampleData from './sampledata';
   locInput.addEventListener('focusout', () => undoClearInput());
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
   document.addEventListener('keydown', (event) => handleKeyDown(event));
-
-  time12Btn.addEventListener('click', () => changeTimeFormat(12));
-  time24Btn.addEventListener('click', () => changeTimeFormat(24));
-  unitsImpBtn.addEventListener('click', () => changeUnitFormat('imp'));
-  unitsMetBtn.addEventListener('click', () => changeUnitFormat('met'));
+  time12Btn.addEventListener('click', () => setTimeFormat(12));
+  time24Btn.addEventListener('click', () => setTimeFormat(24));
+  unitsImpBtn.addEventListener('click', () => setUnitFormat('imp'));
+  unitsMetBtn.addEventListener('click', () => setUnitFormat('met'));
 
   handleSearch('seattle');
 })();
