@@ -1,7 +1,7 @@
 import './normalize.css';
 import './style.css';
 import { format, isToday, isTomorrow, parse } from 'date-fns';
-import getWeather from './weather';
+import getWeatherData from './weather';
 import { titleCase, getBgImage } from './helper-fns';
 import getSampleData from './sampledata';
 
@@ -179,7 +179,7 @@ import getSampleData from './sampledata';
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
     const useAPI = true;
     if (useAPI) {
-      results = await getWeather(location);
+      results = await getWeatherData(location);
       // console.log(JSON.stringify(results));
     } else {
       results = await getSampleData();

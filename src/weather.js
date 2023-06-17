@@ -1,12 +1,7 @@
-const key = 'b512bf463cd641b491323834232404';
+const getIconNum = (iconURL) => iconURL.split(/[./]/).slice(-2)[0];
 
-const getIconNum = (urlString) => {
-  const urlParts = urlString.split('/');
-  const fileName = urlParts.pop().split('.');
-  return fileName[0];
-};
-
-const fetchWeather = async (location) => {
+const callWeatherAPI = async (location) => {
+  const key = 'b512bf463cd641b491323834232404';
   try {
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=7`,
@@ -23,8 +18,8 @@ const fetchWeather = async (location) => {
   }
 };
 
-const getWeather = async (loc = 'san francisco') => {
-  const data = await fetchWeather(loc);
+const getWeatherData = async (loc = 'seattle') => {
+  const data = await callWeatherAPI(loc);
   const locationData = { ...data.location };
   const weatherData = { ...data.current };
   const forecastData = { ...data.forecast.forecastday };
@@ -72,4 +67,4 @@ const getWeather = async (loc = 'san francisco') => {
   return { location, weather, forecast };
 };
 
-export default getWeather;
+export default getWeatherData;
