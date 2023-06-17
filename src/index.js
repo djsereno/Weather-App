@@ -6,6 +6,7 @@ import getWeatherData from './weather';
 import getSampleData from './sampledata';
 
 (() => {
+  // Location data and temperature elements
   const locInput = document.querySelector('#loc');
   const locPinIcon = document.querySelector('.loc-pin');
   const spinnerIcon = document.querySelector('.spinner');
@@ -19,14 +20,17 @@ import getSampleData from './sampledata';
   const unitsImpBtn = document.querySelector('#units-imp');
   const unitsMetBtn = document.querySelector('#units-met');
 
+  // Current condition elements
   const conditionElem = document.querySelector('#condition');
   const conditionIcon = document.querySelector('#condition-icon');
 
+  // Detail information elements
   const feelsLikeImpElem = document.querySelector('#feelslike-imp');
   const feelsLikeMetElem = document.querySelector('#feelslike-met');
   const windSpeedImpElem = document.querySelector('#wind_speed-imp');
   const windSpeedMetElem = document.querySelector('#wind_speed-met');
   const windDirElem = document.querySelector('#wind_dir');
+  const windDirIcon = document.querySelector('#wind-dir-icon');
   const precipImpElem = document.querySelector('#precip-imp');
   const precipMetElem = document.querySelector('#precip-met');
   const humidityElem = document.querySelector('#humidity');
@@ -52,39 +56,32 @@ import getSampleData from './sampledata';
   };
 
   const updateRealtimeDOM = () => {
-    date = new Date(Date.parse(weatherData.location.date));
-
+    // Location data and temperature elements
     locInput.value = `${weatherData.location.city}, ${weatherData.location.region}`;
-
+    date = new Date(Date.parse(weatherData.location.date));
     dateElem.innerText = format(date, 'EEEE, MMMM do');
     setTimeFormat(12);
-
     tempImpElem.innerText = `${weatherData.weather.temp.imp}°F`;
     tempMetElem.innerText = `${weatherData.weather.temp.met}°C`;
-    conditionElem.innerText = titleCase(weatherData.weather.condition.text);
 
+    // Current condition elements
     const iconCode = weatherData.weather.condition.icon;
     const bgImageFile = getBgImage(weatherData.weather.condition.icon);
+    const dayOrNight = weatherData.weather.is_day ? 'day' : 'night';
+    conditionElem.innerText = titleCase(weatherData.weather.condition.text);
+    conditionIcon.setAttribute('src', `./images/icons/${dayOrNight}/${iconCode}.svg`);
+    bgImage.setAttribute('src', `./images/backgrounds/${dayOrNight}/${bgImageFile}.jpg`);
 
-    if (weatherData.weather.is_day) {
-      conditionIcon.setAttribute('src', `./images/icons/day/${iconCode}.svg`);
-      bgImage.setAttribute('src', `./images/backgrounds/day/${bgImageFile}.jpg`);
-    } else {
-      conditionIcon.setAttribute('src', `./images/icons/night/${iconCode}.svg`);
-      bgImage.setAttribute('src', `./images/backgrounds/night/${bgImageFile}.jpg`);
-    }
-
+    // Detail information elements
     feelsLikeImpElem.innerText = `${weatherData.weather.feelslike.imp}°F`;
     feelsLikeMetElem.innerText = `${weatherData.weather.feelslike.met}°C`;
     windSpeedImpElem.innerText = `${weatherData.weather.wind_speed.imp} mph`;
     windSpeedMetElem.innerText = `${weatherData.weather.wind_speed.met} kph`;
     windDirElem.innerText = weatherData.weather.wind_dir;
+    windDirIcon.style.transform = `rotate(${weatherData.weather.wind_degree - 45}deg)`;
     humidityElem.innerText = `${weatherData.weather.humidity}%`;
     precipImpElem.innerText = `${weatherData.weather.precip.imp} in`;
     precipMetElem.innerText = `${weatherData.weather.precip.met} mm`;
-
-    const windDirIcon = document.querySelector('#wind-dir-icon');
-    windDirIcon.style.transform = `rotate(${weatherData.weather.wind_degree - 45}deg)`;
   };
 
   const updateForecastDOM = () => {
