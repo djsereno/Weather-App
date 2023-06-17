@@ -132,13 +132,14 @@ main {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.spinner:not(.hidden) {
   transform-origin: center;
   animation-duration: 0.7s;
   animation-name: spinner;
   animation-iteration-count: infinite;
   animation-timing-function: steps(8, end);
 }
-
 @keyframes spinner {
   from {
     transform: translate(-50%, -50%) rotate(0deg);

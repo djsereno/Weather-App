@@ -1,8 +1,8 @@
 import './normalize.css';
 import './style.css';
 import { format, isToday, isTomorrow, parse } from 'date-fns';
-import getWeatherData from './weather';
 import { titleCase, getBgImage } from './helper-fns';
+import getWeatherData from './weather';
 import getSampleData from './sampledata';
 
 (() => {
@@ -10,13 +10,18 @@ import getSampleData from './sampledata';
   const locPinIcon = document.querySelector('.loc-pin');
   const spinnerIcon = document.querySelector('.spinner');
   const searchBtn = document.querySelector('#search');
-
   const dateElem = document.querySelector('#date');
   const timeElem = document.querySelector('#time');
+  const time12Btn = document.querySelector('#time-12');
+  const time24Btn = document.querySelector('#time-24');
   const tempImpElem = document.querySelector('#temp-imp');
   const tempMetElem = document.querySelector('#temp-met');
+  const unitsImpBtn = document.querySelector('#units-imp');
+  const unitsMetBtn = document.querySelector('#units-met');
+
   const conditionElem = document.querySelector('#condition');
   const conditionIcon = document.querySelector('#condition-icon');
+
   const feelsLikeImpElem = document.querySelector('#feelslike-imp');
   const feelsLikeMetElem = document.querySelector('#feelslike-met');
   const windSpeedImpElem = document.querySelector('#wind_speed-imp');
@@ -25,41 +30,30 @@ import getSampleData from './sampledata';
   const precipImpElem = document.querySelector('#precip-imp');
   const precipMetElem = document.querySelector('#precip-met');
   const humidityElem = document.querySelector('#humidity');
+
   const forecastElem = document.querySelector('#forecast');
   const bgImage = document.querySelector('#bg-image');
-
-  const time12Btn = document.querySelector('#time-12');
-  const time24Btn = document.querySelector('#time-24');
-  const unitsImpBtn = document.querySelector('#units-imp');
-  const unitsMetBtn = document.querySelector('#units-met');
-
   let results = {};
   let date = new Date();
 
-  const updateTimeElem = (timeFormat) => {
-    if (timeFormat === 24) {
-      timeElem.innerText = format(date, 'kk:mm');
-      return;
-    }
-    timeElem.innerText = format(date, 'p');
-  };
-
-  const toggleSpinnerVisibility = () => {
+  const toggleLoadingSpinner = () => {
     locPinIcon.classList.toggle('visible');
     spinnerIcon.classList.toggle('hidden');
   };
 
-  const setMeasureVisibility = (unitsFormat = 'imp') => {
-    const imperialElems = document.querySelectorAll('.imp');
-    const metricElems = document.querySelectorAll('.met');
+  const changeTimeFormat = (timeFormat = 12) => {
+    timeFormat === 24
+      ? (timeElem.innerText = format(date, 'kk:mm'))
+      : (timeElem.innerText = format(date, 'p'));
+  };
 
-    if (unitsFormat === 'met') {
-      imperialElems.forEach((elem) => elem.classList.add('hidden'));
-      metricElems.forEach((elem) => elem.classList.remove('hidden'));
-      return;
-    }
-    imperialElems.forEach((elem) => elem.classList.remove('hidden'));
-    metricElems.forEach((elem) => elem.classList.add('hidden'));
+  const changeUnitFormat = (unitsFormat = 'imp') => {
+    const measurementElems = document.querySelectorAll('.imp, .met');
+    measurementElems.forEach((elem) => {
+      elem.classList.contains(unitsFormat)
+        ? elem.classList.remove('hidden')
+        : elem.classList.add('hidden');
+    });
   };
 
   const updateRealtimeDOM = () => {
@@ -68,7 +62,7 @@ import getSampleData from './sampledata';
     locInput.value = `${results.location.city}, ${results.location.region}`;
 
     dateElem.innerText = format(date, 'EEEE, MMMM do');
-    updateTimeElem(12);
+    changeTimeFormat(12);
 
     tempImpElem.innerText = `${results.weather.temp.imp}°F`;
     tempMetElem.innerText = `${results.weather.temp.met}°C`;
@@ -174,10 +168,10 @@ import getSampleData from './sampledata';
   const handleSearch = async (location) => {
     if (!location) return;
 
-    toggleSpinnerVisibility();
+    toggleLoadingSpinner();
 
     // FOR DEVELOPMENT USE TO AVOID WASTEFUL API CALLS
-    const useAPI = true;
+    const useAPI = false;
     if (useAPI) {
       results = await getWeatherData(location);
       // console.log(JSON.stringify(results));
@@ -185,10 +179,10 @@ import getSampleData from './sampledata';
       results = await getSampleData();
     }
 
-    toggleSpinnerVisibility();
+    toggleLoadingSpinner();
     updateRealtimeDOM();
     updateForecastDOM();
-    setMeasureVisibility();
+    changeUnitFormat();
     searchBtn.classList.remove('visible');
   };
 
@@ -216,10 +210,10 @@ import getSampleData from './sampledata';
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
   document.addEventListener('keydown', (event) => handleKeyDown(event));
 
-  time12Btn.addEventListener('click', () => updateTimeElem(12));
-  time24Btn.addEventListener('click', () => updateTimeElem(24));
-  unitsImpBtn.addEventListener('click', () => setMeasureVisibility('imp'));
-  unitsMetBtn.addEventListener('click', () => setMeasureVisibility('met'));
+  time12Btn.addEventListener('click', () => changeTimeFormat(12));
+  time24Btn.addEventListener('click', () => changeTimeFormat(24));
+  unitsImpBtn.addEventListener('click', () => changeUnitFormat('imp'));
+  unitsMetBtn.addEventListener('click', () => changeUnitFormat('met'));
 
   handleSearch('seattle');
 })();
