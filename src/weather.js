@@ -14,12 +14,13 @@ const callWeatherAPI = async (location) => {
     return data;
   } catch (error) {
     console.error(error);
-    return {};
+    return null;
   }
 };
 
 const getWeatherData = async (loc = 'seattle') => {
   const data = await callWeatherAPI(loc);
+  if (!data) return null;
   const locationData = { ...data.location };
   const weatherData = { ...data.current };
   const forecastData = { ...data.forecast.forecastday };

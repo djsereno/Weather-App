@@ -33,13 +33,8 @@ import getSampleData from './sampledata';
 
   const forecastElem = document.querySelector('#forecast');
   const bgImage = document.querySelector('#bg-image');
-  let results = {};
+  let weatherData = {};
   let date = new Date();
-
-  const toggleLoadingSpinner = () => {
-    locPinIcon.classList.toggle('visible');
-    spinnerIcon.classList.toggle('hidden');
-  };
 
   const setTimeFormat = (timeFormat = 12) => {
     timeFormat === 24
@@ -57,21 +52,21 @@ import getSampleData from './sampledata';
   };
 
   const updateRealtimeDOM = () => {
-    date = new Date(Date.parse(results.location.date));
+    date = new Date(Date.parse(weatherData.location.date));
 
-    locInput.value = `${results.location.city}, ${results.location.region}`;
+    locInput.value = `${weatherData.location.city}, ${weatherData.location.region}`;
 
     dateElem.innerText = format(date, 'EEEE, MMMM do');
     setTimeFormat(12);
 
-    tempImpElem.innerText = `${results.weather.temp.imp}°F`;
-    tempMetElem.innerText = `${results.weather.temp.met}°C`;
-    conditionElem.innerText = titleCase(results.weather.condition.text);
+    tempImpElem.innerText = `${weatherData.weather.temp.imp}°F`;
+    tempMetElem.innerText = `${weatherData.weather.temp.met}°C`;
+    conditionElem.innerText = titleCase(weatherData.weather.condition.text);
 
-    const iconCode = results.weather.condition.icon;
-    const bgImageFile = getBgImage(results.weather.condition.icon);
+    const iconCode = weatherData.weather.condition.icon;
+    const bgImageFile = getBgImage(weatherData.weather.condition.icon);
 
-    if (results.weather.is_day) {
+    if (weatherData.weather.is_day) {
       conditionIcon.setAttribute('src', `./images/icons/day/${iconCode}.svg`);
       bgImage.setAttribute('src', `./images/backgrounds/day/${bgImageFile}.jpg`);
     } else {
@@ -79,17 +74,17 @@ import getSampleData from './sampledata';
       bgImage.setAttribute('src', `./images/backgrounds/night/${bgImageFile}.jpg`);
     }
 
-    feelsLikeImpElem.innerText = `${results.weather.feelslike.imp}°F`;
-    feelsLikeMetElem.innerText = `${results.weather.feelslike.met}°C`;
-    windSpeedImpElem.innerText = `${results.weather.wind_speed.imp} mph`;
-    windSpeedMetElem.innerText = `${results.weather.wind_speed.met} kph`;
-    windDirElem.innerText = results.weather.wind_dir;
-    humidityElem.innerText = `${results.weather.humidity}%`;
-    precipImpElem.innerText = `${results.weather.precip.imp} in`;
-    precipMetElem.innerText = `${results.weather.precip.met} mm`;
+    feelsLikeImpElem.innerText = `${weatherData.weather.feelslike.imp}°F`;
+    feelsLikeMetElem.innerText = `${weatherData.weather.feelslike.met}°C`;
+    windSpeedImpElem.innerText = `${weatherData.weather.wind_speed.imp} mph`;
+    windSpeedMetElem.innerText = `${weatherData.weather.wind_speed.met} kph`;
+    windDirElem.innerText = weatherData.weather.wind_dir;
+    humidityElem.innerText = `${weatherData.weather.humidity}%`;
+    precipImpElem.innerText = `${weatherData.weather.precip.imp} in`;
+    precipMetElem.innerText = `${weatherData.weather.precip.met} mm`;
 
     const windDirIcon = document.querySelector('#wind-dir-icon');
-    windDirIcon.style.transform = `rotate(${results.weather.wind_degree - 45}deg)`;
+    windDirIcon.style.transform = `rotate(${weatherData.weather.wind_degree - 45}deg)`;
   };
 
   const updateForecastDOM = () => {
@@ -97,7 +92,7 @@ import getSampleData from './sampledata';
       forecastElem.removeChild(forecastElem.lastChild);
     }
 
-    results.forecast.forEach((day) => {
+    weatherData.forecast.forEach((day) => {
       const forecastCardElem = document.createElement('div');
       const dayElem = document.createElement('div');
       const conditionForeIcon = document.createElement('img');
@@ -165,16 +160,29 @@ import getSampleData from './sampledata';
     });
   };
 
+  const toggleLoadingSpinner = () => {
+    locPinIcon.classList.toggle('visible');
+    spinnerIcon.classList.toggle('hidden');
+  };
+
   const handleSearch = async (location) => {
     if (!location) return;
+
+    toggleLoadingSpinner();
     const useAPI = true; // For dev use to avoid wasteful API calls
+    const newWeatherData = useAPI ? await getWeatherData(location) : await getSampleData();
     toggleLoadingSpinner();
-    useAPI ? (results = await getWeatherData(location)) : (results = await getSampleData());
-    toggleLoadingSpinner();
+    searchBtn.classList.remove('visible');
+
+    if (!newWeatherData) {
+      locInput.classList.add('invalid-input');
+      locInput.value = `${weatherData.location.city}, ${weatherData.location.region}`;
+      return;
+    }
+    weatherData = newWeatherData;
     updateRealtimeDOM();
     updateForecastDOM();
     setUnitFormat();
-    searchBtn.classList.remove('visible');
   };
 
   const clearInput = () => {
@@ -184,7 +192,7 @@ import getSampleData from './sampledata';
 
   const undoClearInput = () => {
     if (locInput.value !== '') return;
-    locInput.value = `${results.location.city}, ${results.location.region}`;
+    locInput.value = `${weatherData.location.city}, ${weatherData.location.region}`;
     searchBtn.classList.remove('visible');
   };
 
@@ -198,6 +206,9 @@ import getSampleData from './sampledata';
 
   locInput.addEventListener('focusin', () => clearInput());
   locInput.addEventListener('focusout', () => undoClearInput());
+  locInput.addEventListener('animationend', () => {
+    locInput.classList.remove('invalid-input');
+  });
   searchBtn.addEventListener('click', () => handleSearch(locInput.value));
   document.addEventListener('keydown', (event) => handleKeyDown(event));
   time12Btn.addEventListener('click', () => setTimeFormat(12));
