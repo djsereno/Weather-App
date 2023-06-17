@@ -92,66 +92,61 @@ import getSampleData from './sampledata';
     weatherData.forecast.forEach((day) => {
       const forecastCardElem = document.createElement('div');
       const dayElem = document.createElement('div');
-      const conditionForeIcon = document.createElement('img');
+      const forecastIcon = document.createElement('img');
       const highLowGroup = document.createElement('div');
       const highTempGroup = document.createElement('span');
-      const highTempForeImpElem = document.createElement('span');
-      const highTempForeMetElem = document.createElement('span');
+      const highTempImpElem = document.createElement('span');
+      const highTempMetElem = document.createElement('span');
       const lowTempGroup = document.createElement('span');
-      const lowTempForeImpElem = document.createElement('span');
-      const lowTempForeMetElem = document.createElement('span');
+      const lowTempImpElem = document.createElement('span');
+      const lowTempMetElem = document.createElement('span');
       const precipGroup = document.createElement('div');
-      const precipForeIcon = document.createElement('i');
+      const precipIcon = document.createElement('i');
       const precipForeElem = document.createElement('span');
 
-      const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
       const forecastWeather = day.weather;
-
+      const forecastDate = parse(day.date, 'yyyy-MM-dd', new Date());
       dayElem.innerText = format(forecastDate, 'ccc d');
       if (isToday(forecastDate)) dayElem.innerText = 'Today';
       if (isTomorrow(forecastDate)) dayElem.innerText = 'Tomorrow';
+      forecastIcon.setAttribute('src', `./images/icons/day/${forecastWeather.condition.icon}.svg`);
+      highTempImpElem.innerText = `${forecastWeather.maxtemp.imp}°`;
+      highTempMetElem.innerText = `${forecastWeather.maxtemp.met}°`;
+      lowTempImpElem.innerText = `${forecastWeather.mintemp.imp}°`;
+      lowTempMetElem.innerText = `${forecastWeather.mintemp.met}°`;
 
-      conditionForeIcon.setAttribute(
-        'src',
-        `./images/icons/day/${forecastWeather.condition.icon}.svg`,
-      );
-
-      highTempForeImpElem.innerText = `${forecastWeather.maxtemp.imp}°`;
-      highTempForeMetElem.innerText = `${forecastWeather.maxtemp.met}°`;
-      lowTempForeImpElem.innerText = `${forecastWeather.mintemp.imp}°`;
-      lowTempForeMetElem.innerText = `${forecastWeather.mintemp.met}°`;
-
+      // Chance of rain/snow element
       if (forecastWeather.daily_chance_of_snow > forecastWeather.daily_chance_of_rain) {
-        precipForeIcon.classList.add('fa-regular', 'fa-snowflake');
+        precipIcon.classList.add('fa-regular', 'fa-snowflake');
         precipForeElem.innerText = ` ${forecastWeather.daily_chance_of_snow}%`;
       } else if (forecastWeather.daily_chance_of_rain !== 0) {
-        precipForeIcon.classList.add('fa-solid', 'fa-cloud-rain');
+        precipIcon.classList.add('fa-solid', 'fa-cloud-rain');
         precipForeElem.innerText = ` ${forecastWeather.daily_chance_of_rain}%`;
       }
-      precipGroup.appendChild(precipForeIcon);
+      precipGroup.appendChild(precipIcon);
       precipGroup.appendChild(precipForeElem);
 
       forecastCardElem.classList.add('card', 'flex-col');
       dayElem.classList.add('day');
-      conditionForeIcon.classList.add('forecast-icon');
+      forecastIcon.classList.add('forecast-icon');
       highLowGroup.classList.add('high-low');
       highTempGroup.classList.add('high-temp');
-      highTempForeImpElem.classList.add('temp', 'imp');
-      highTempForeMetElem.classList.add('temp', 'met');
+      highTempImpElem.classList.add('temp', 'imp');
+      highTempMetElem.classList.add('temp', 'met');
       lowTempGroup.classList.add('low-temp');
-      lowTempForeImpElem.classList.add('temp', 'imp');
-      lowTempForeMetElem.classList.add('temp', 'met');
+      lowTempImpElem.classList.add('temp', 'imp');
+      lowTempMetElem.classList.add('temp', 'met');
       precipGroup.classList.add('precipitation');
 
       forecastCardElem.appendChild(dayElem);
-      forecastCardElem.appendChild(conditionForeIcon);
+      forecastCardElem.appendChild(forecastIcon);
       forecastCardElem.appendChild(highLowGroup);
       highLowGroup.appendChild(highTempGroup);
-      highTempGroup.appendChild(highTempForeImpElem);
-      highTempGroup.appendChild(highTempForeMetElem);
+      highTempGroup.appendChild(highTempImpElem);
+      highTempGroup.appendChild(highTempMetElem);
       highLowGroup.appendChild(lowTempGroup);
-      lowTempGroup.appendChild(lowTempForeImpElem);
-      lowTempGroup.appendChild(lowTempForeMetElem);
+      lowTempGroup.appendChild(lowTempImpElem);
+      lowTempGroup.appendChild(lowTempMetElem);
       forecastCardElem.appendChild(precipGroup);
       forecastElem.appendChild(forecastCardElem);
     });
