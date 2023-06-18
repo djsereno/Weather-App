@@ -8,7 +8,6 @@
   --fs-300: 0.8rem;
 
   --clr-primary: white;
-  --blur-intensity: 0px;
 }
 
 @media (max-width: 1200px) {
@@ -18,7 +17,6 @@
     --fs-500: 1.375rem;
   }
 }
-
 @media (max-width: 1000px) {
   :root {
     --fs-xl: 4rem;
@@ -38,15 +36,13 @@
 body {
   font-family: 'Roboto', system-ui;
   font-size: var(--fs-400);
-  color: white;
+  color: var(--clr-primary);
   line-height: 1.5;
 }
 
 main {
   width: min(1200px, 100% - 4rem);
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  margin-inline: auto;
+  margin: 5rem auto 5rem;
 }
 
 .bg {
@@ -56,24 +52,15 @@ main {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: rgb(99, 174, 244);
   background: linear-gradient(180deg, rgba(99, 174, 244, 1) 0%, rgba(44, 95, 143, 1) 100%);
 }
-
 .bg img {
-  position: absolute;
-  left: calc(-2 * var(--blur-intensity));
-  right: 0;
-  top: calc(-2 * var(--blur-intensity));
-  bottom: 0;
-  width: calc(100% + 4 * var(--blur-intensity));
-  height: calc(100% + 4 * var(--blur-intensity));
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: blur(var(--blur-intensity)) brightness(80%);
 }
 
 .card {
-  max-width: 100%;
   padding: 1rem;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -85,15 +72,17 @@ main {
   opacity: 0;
 }
 
-.flex-row {
-  display: flex;
-}
-
 .flex-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+.invalid-input {
+  animation: shake 0.4s 1 linear;
+}
+
+/* ~~~~~CURRENT WEATHER ELEMENTS~~~~~ */
 
 #current-weather {
   display: grid;
@@ -103,6 +92,8 @@ main {
   gap: 3rem;
   padding: 3rem;
 }
+
+/* Location data and temperature elements */
 
 #main {
   display: grid;
@@ -119,14 +110,12 @@ main {
 .spinner-group {
   position: relative;
 }
-
 .loc-pin {
   visibility: hidden;
 }
 .loc-pin.visible {
   visibility: visible;
 }
-
 .spinner {
   display: block;
   position: absolute;
@@ -140,14 +129,6 @@ main {
   animation-iteration-count: infinite;
   animation-timing-function: steps(8, end);
 }
-@keyframes spinner {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
 #loc,
 #search {
@@ -156,7 +137,6 @@ main {
   border: none;
   color: var(--clr-primary);
 }
-
 #loc:focus-visible,
 #search:focus-visible {
   outline: 2px solid var(--clr-primary);
@@ -168,11 +148,9 @@ main {
   text-overflow: ellipsis;
   width: 100%;
 }
-
 #loc:hover:not(:focus) {
   text-decoration: underline;
 }
-
 #loc::placeholder {
   color: var(--clr-primary);
   font-weight: 300;
@@ -181,13 +159,13 @@ main {
 
 #search {
   visibility: hidden;
-  font-size: 0.1em;
+  font-size: 0.1rem;
   transition: font-size 0.3s 0s, visibility 0s 0.3s;
 }
 #search.visible {
   transition: visibility 0s, font-size 0.3s;
   visibility: visible;
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
 
 #date,
@@ -205,44 +183,43 @@ main {
   color: var(--clr-primary);
   opacity: 0.4;
 }
-
 button.unit-toggle {
   border: none;
   background-color: transparent;
   color: var(--clr-primary);
 }
-
 button.unit-toggle:hover {
   text-decoration: underline;
 }
-
 button:hover {
   cursor: pointer;
 }
 
+/* Current condition elements */
+
 #current-condition {
   width: 100%;
   font-size: var(--fs-600);
-  font-weight: 300;
   font-weight: bold;
   text-align: center;
 }
-
 #condition-icon {
   width: 100%;
 }
 
+/* Detail information elements */
+
 #details {
   line-height: 1.8;
 }
-
 .detail-group > i:first-child {
   width: 3ch;
 }
-
 .detail-group > #wind_dir {
   margin-right: 1ch;
 }
+
+/* ~~~~~FORECAST WEATHER ELEMENTS~~~~~ */
 
 #forecast {
   display: grid;
@@ -250,44 +227,36 @@ button:hover {
   margin-top: 10px;
   gap: 10px;
 }
-
 #forecast .card {
   align-items: center;
   justify-content: start;
   text-align: center;
   gap: 5px;
 }
-
 .day {
-  font-weight: 300;
+  font-weight: bold;
 }
-
 .forecast-icon {
   width: min(200px, 100%);
 }
-
 .high-low {
   display: flex;
   gap: 1ch;
 }
-
 .high-temp {
-  font-weight: 500;
+  font-weight: bold;
 }
-
 .low-temp {
   font-weight: 300;
   opacity: 0.6;
 }
-
 .precipitation {
   font-size: var(--fs-300);
   opacity: 0.6;
 }
 
-.invalid-input {
-  animation: shake 0.4s 1 linear;
-}
+/* ~~~~~ANIMATION KEYFRAMES~~~~~ */
+
 @keyframes shake {
   0% {
     transform: translate(20px);
@@ -309,6 +278,17 @@ button:hover {
   }
 }
 
+@keyframes spinner {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ~~~~~LAYOUT MEDIA QUERIES~~~~~ */
+
 @media (max-width: 800px) {
   main {
     margin-top: 2rem;
@@ -316,37 +296,31 @@ button:hover {
   }
   #current-weather {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
+    justify-items: start;
+    gap: 0rem;
   }
   #current-condition {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
     align-self: center;
   }
-  #details {
-    justify-self: start;
-  }
 }
 
 @media (max-width: 600px) {
-  #main {
-    justify-self: center;
+  #current-weather {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
+    padding: 1.5rem;
+    place-items: center;
     text-align: center;
   }
   #loc {
     text-align: center;
   }
-  #current-weather {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, min-content);
-    gap: 0rem;
-    padding: 1.5rem;
-  }
   #current-condition {
     grid-column: auto;
     grid-row: auto;
-    align-self: center;
-    max-height: 250px;
   }
   #condition-icon {
     height: 200px;
@@ -354,6 +328,5 @@ button:hover {
   }
   #details {
     padding-top: 2rem;
-    justify-self: center;
   }
 }

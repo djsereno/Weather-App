@@ -5,6 +5,8 @@ import { titleCase, getBgImage } from './helper-fns';
 import getWeatherData from './weather';
 import getSampleData from './sampledata';
 
+const USE_API = true; // For dev use to avoid wasteful API calls
+
 (() => {
   // Location data and temperature elements
   const locInput = document.querySelector('#loc');
@@ -161,8 +163,7 @@ import getSampleData from './sampledata';
     if (!location) return;
 
     toggleLoadingSpinner();
-    const useAPI = true; // For dev use to avoid wasteful API calls
-    const newWeatherData = useAPI ? await getWeatherData(location) : await getSampleData();
+    const newWeatherData = USE_API ? await getWeatherData(location) : await getSampleData();
     toggleLoadingSpinner();
     searchBtn.classList.remove('visible');
 
